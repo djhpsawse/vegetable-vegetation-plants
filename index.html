@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> vegetable, vegetation & plants </title>
+  <title>Vegetable, Vegetation & Plants</title>
+
   <style>
     body {
       margin: 0;
@@ -20,22 +21,46 @@
       position: relative;
     }
 
+    /* ✅ NEW: About button (top-left) */
+    #aboutBtn {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: white;
+      color: #2f4f2f;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    #aboutBtn:hover {
+      background: #e8f2e8;
+    }
+
     #cartBtn {
       position: absolute;
       right: 20px;
       top: 20px;
       background: white;
       color: #2f4f2f;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
       cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     nav {
       display: flex;
-      justify-content: centre;
+      justify-content: center; /* ✅ fixed */
       background: #2f5f35;
       flex-wrap: wrap;
+      gap: 4px;
     }
 
     nav a {
@@ -43,6 +68,8 @@
       padding: 14px 20px;
       text-decoration: none;
       cursor: pointer;
+      border-radius: 8px;
+      margin: 4px 0;
     }
 
     nav a:hover {
@@ -50,14 +77,14 @@
     }
 
     .hero {
-      background: url('https://www.saferbrand.com/media/Articles/Safer-Brand/26-best-indoor-plants.jpg') centre/cover;
+      background: url('https://www.saferbrand.com/media/Articles/Safer-Brand/26-best-indoor-plants.jpg') center/cover; /* ✅ fixed */
       height: 300px;
       display: flex;
-      align-items: centre;
-      justify-content: centre;
+      align-items: center; /* ✅ fixed */
+      justify-content: center; /* ✅ fixed */
       color: white;
       text-shadow: 2px 2px 5px black;
-      text-align: centre;
+      text-align: center; /* ✅ fixed */
     }
 
     .container {
@@ -75,47 +102,66 @@
     .card {
       background: white;
       padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: centre;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center; /* ✅ fixed */
     }
 
     .card img {
       width: 100%;
       height: 150px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
+      background: #e9f3e9;
     }
 
     button {
       background: #3a7d44;
       color: white;
       border: none;
-      padding: 8px;
+      padding: 9px 10px;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 8px;
       margin-top: 10px;
+      font-weight: bold;
     }
 
     button:hover {
       background: #2f5f35;
     }
 
+    /* Cart panel */
     #cartPanel {
       position: fixed;
-      right: -350px;
+      right: -360px;
       top: 0;
-      width: 320px;
+      width: 340px;
       height: 100%;
       background: white;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-      padding: 20px;
+      box-shadow: -2px 0 14px rgba(0,0,0,0.25);
+      padding: 18px;
       transition: 0.3s;
       overflow-y: auto;
       z-index: 1000;
+      border-left: 1px solid #e7e7e7;
     }
 
     #cartPanel.open { right: 0; }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .closeCartBtn {
+      background: #2f4f2f;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin: 0;
+    }
 
     .cart-item {
       display: flex;
@@ -123,36 +169,39 @@
       gap: 4px;
       margin-bottom: 12px;
       border-bottom: 1px solid #eee;
-      padding-bottom: 8px;
+      padding-bottom: 10px;
     }
 
     .cart-top {
       display: flex;
       justify-content: space-between;
       font-weight: bold;
+      gap: 10px;
     }
 
     .cart-qty-row {
       display: flex;
       justify-content: space-between;
-      align-items: centre;
+      align-items: center; /* ✅ fixed */
       font-size: 14px;
+      gap: 8px;
     }
 
     .qty-controls {
       display: flex;
-      gap: 5px;
-      align-items: centre;
+      gap: 6px;
+      align-items: center;
     }
 
     .qty-btn {
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 9px;
+      border-radius: 7px;
       background: #3a7d44;
       color: #fff;
       border: none;
       cursor: pointer;
       font-size: 14px;
+      margin: 0;
     }
 
     .qty-btn:hover {
@@ -160,38 +209,51 @@
     }
 
     .remove {
-      background: red;
+      background: #d62828;
       color: white;
       border: none;
-      padding: 3px 6px;
-      border-radius: 4px;
+      padding: 6px 9px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 12px;
+      margin: 0;
+      font-weight: bold;
     }
 
     #checkout {
-      margin-top: 20px;
+      margin-top: 18px;
       border-top: 1px solid #ccc;
-      padding-top: 10px;
+      padding-top: 12px;
     }
 
     input, select {
       width: 100%;
-      padding: 8px;
-      margin: 5px 0;
+      padding: 9px;
+      margin: 6px 0;
       box-sizing: border-box;
+      border: 1px solid #cfe0cf;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #3a7d44;
+      box-shadow: 0 0 0 3px rgba(58,125,68,0.15);
     }
 
     .payBtn {
       background: #0070ba;
+      width: 100%;
     }
+
+    .payBtn:hover { background: #005a96; }
 
     #adminPanel, #loginPanel {
       background: white;
       padding: 20px;
       margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     #adminPanel { display:none; }
@@ -204,13 +266,14 @@
     }
 
     .category-tab {
-      padding: 6px 12px;
-      border-radius: 20px;
+      padding: 8px 14px;
+      border-radius: 999px;
       border: 1px solid #3a7d44;
       background: white;
       color: #3a7d44;
       cursor: pointer;
       font-size: 14px;
+      margin-top: 0;
     }
 
     .category-tab.active {
@@ -220,9 +283,9 @@
 
     #searchBar {
       margin-bottom: 15px;
-      padding: 8px;
+      padding: 10px;
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
     }
 
     .admin-row {
@@ -238,14 +301,33 @@
     .label {
       font-size: 13px;
       margin-top: 5px;
+      color: #355c35;
+      font-weight: bold;
+    }
+
+    .muted {
+      font-size: 13px;
+      color: #486a48;
+      margin-top: -8px;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e6e6e6;
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>vegetable, vegetation & plants</h1>
+  <!-- ✅ NEW top-left button -->
+  <a id="aboutBtn" href="https://djhpsawse.github.io/about-my-site/">About This Site</a>
+
+  <h1>Vegetable, Vegetation & Plants</h1>
   <p>Growing a greener tomorrow</p>
+
   <div id="cartBtn" onclick="toggleCart()">Cart (<span id="count">0</span>)</div>
 </header>
 
@@ -266,13 +348,13 @@
 
   <!-- Category Tabs -->
   <div class="category-tabs">
-    <button class="category-tab active" data-cat="All" onclick="setCategory('All', this)">All</button>
-    <button class="category-tab" data-cat="Herbs" onclick="setCategory('Herbs', this)">Herbs</button>
-    <button class="category-tab" data-cat="Roots" onclick="setCategory('Roots', this)">Roots</button>
-    <button class="category-tab" data-cat="Salad" onclick="setCategory('Salad', this)">Salad</button>
-    <button class="category-tab" data-cat="Beans" onclick="setCategory('Beans', this)">Beans</button>
-    <button class="category-tab" data-cat="seeds" onclick="setCategory('seeds', this)">seeds</button>
-    <button class="category-tab" data-cat="gift boxes" onclick="setCategory('gift boxes', this)">gift boxes</button>
+    <button class="category-tab active" onclick="setCategory('All', this)">All</button>
+    <button class="category-tab" onclick="setCategory('Herbs', this)">Herbs</button>
+    <button class="category-tab" onclick="setCategory('Roots', this)">Roots</button>
+    <button class="category-tab" onclick="setCategory('Salad', this)">Salad</button>
+    <button class="category-tab" onclick="setCategory('Beans', this)">Beans</button>
+    <button class="category-tab" onclick="setCategory('Seeds', this)">Seeds</button>
+    <button class="category-tab" onclick="setCategory('Gift Boxes', this)">Gift Boxes</button>
   </div>
 
   <!-- Search Bar -->
@@ -282,6 +364,7 @@
 
   <div id="loginPanel">
     <h2>Admin Login</h2>
+    <p class="muted">Demo login (client-side). Anyone can view source in a real website.</p>
     <input id="user" placeholder="Username" />
     <input id="pass" type="password" placeholder="Password" />
     <button onclick="login()">Login</button>
@@ -297,7 +380,7 @@
         <input id="name" placeholder="Plant Name" />
       </div>
       <div>
-        <div class="label">Price</div>
+        <div class="label">Price (£)</div>
         <input id="price" placeholder="Price" />
       </div>
       <div>
@@ -311,6 +394,8 @@
           <option value="Roots">Roots</option>
           <option value="Salad">Salad</option>
           <option value="Beans">Beans</option>
+          <option value="Seeds">Seeds</option>
+          <option value="Gift Boxes">Gift Boxes</option>
         </select>
       </div>
     </div>
@@ -331,7 +416,7 @@
         <input id="editName" placeholder="Plant Name" />
       </div>
       <div>
-        <div class="label">Price</div>
+        <div class="label">Price (£)</div>
         <input id="editPrice" placeholder="Price" />
       </div>
       <div>
@@ -345,19 +430,23 @@
           <option value="Roots">Roots</option>
           <option value="Salad">Salad</option>
           <option value="Beans">Beans</option>
-          <option value="seeds">seeds</option>
-          <option value="gift boxes">gift boxes</option>
+          <option value="Seeds">Seeds</option>
+          <option value="Gift Boxes">Gift Boxes</option>
         </select>
       </div>
     </div>
     <button onclick="saveEditedProduct()">Save Changes</button>
-    <button onclick="logout()" style="background:red; margin-left:10px;">Logout</button>
+    <button onclick="logout()" style="background:#d62828; margin-left:10px;">Logout</button>
   </div>
 
 </div>
 
 <div id="cartPanel">
-  <h2>Your Cart</h2>
+  <div class="cart-header">
+    <h2 style="margin: 6px 0;">Your Cart</h2>
+    <button class="closeCartBtn" onclick="toggleCart()">Close</button>
+  </div>
+
   <div id="cartItems"></div>
   <h3>Total: £<span id="total">0.00</span></h3>
 
@@ -373,32 +462,37 @@
 <script>
   let isAdmin = false;
 
+  // ✅ Fixed: valid JS, unique IDs, consistent categories
   let products = [
-    {id:1, name:"rocket (cultivated)", price:2.00, category:"Salad", image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg"},
-    {id:2, name:"red lettuce (salad bowl)", price:2.50, category:"Salad", image:"https://www.harrisseeds.com/cdn/shop/files/01527_900x.jpg?v=1736905903"},
-    {id:3, name:"carrot (Nantes 2)", price:3.50, category:"Roots", image:"https://gardenerspath.com/wp-content/uploads/2025/01/Carrots-Ready-to-Harvest-in-the-Garden-2.jpg"},
-    {id:4, name:"tomato (agura)", price:2.00, category:"Salad", image:"https://media.istockphoto.com/id/512694992/photo/young-tomato-plant-growing-tomato-in-garden.jpg?s=170667a&w=0&k=20&c=2uXN2qMYOR1ZIuG1lQYFQZyGTN4CTLzaPHSL16JCsXY="},
-    {id:5, name:"spinach (perpetual)", price:2.50, category:"Salad", image:"https://premierseedsdirect.com/wp-content/uploads/2017/02/41579623-2.jpg"},
-    {id:6, name:"tomato (idyll)", price:2.50, category:"Salad", image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480"},
-    {id:7, name:"chives", price:2.00, category:"Herbs", image:"https://tse3.mm.bing.net/th/id/OIP.EAd4tdgoNtf83f9Pp4NOxAHaJi?pid=ImgDet&w=474&h=610&rs=1&o=7&rm=3&adlt=strict"},
-    {id:8, name:"sorrel (garden)", price:2.50, category:"Herbs", image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg"},
-    {id:9, name:"cauliflower (all season)", price:2.50, category:"Salad", image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg"},
-    {id:10, name:"french bean (Ferrari)", price:2.00, category:"Beans", image:"https://th.bing.com/th/id/R.11359ce623cfe6edaf7a6cdf82b046b5?rik=cc2fJ4eQCnTMgQ&pid=ImgRaw&r=0&adlt=strict"},
-    {id:11, name:"broccoli (Calabrese)", price:2.50, category:"Salad", image:"https://tse2.mm.bing.net/th/id/OIP.YJ3Bqpw2MQwej-8tE43ePgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3&adlt=strict"},
-    {id:12, name:"beetroot (Detroit)", price:2.00, category:"Roots", image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2"},
-    {id:13, name:"swiss chard (mixed)", price:3.00, category:"Salad", image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b"},
-    {id:14, name:"carrot (Cosmic purple)", price:2.50, category:"Roots", image:"https://images.unsplash.com/photo-1560807707-8cc77767d783"},
-    {id:15, name:"curly kale (Nero Di Toscana)", price:3.00, category:"Salad", image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76"},
-    {id:16, name:"parsley", price:2.50, category:"Herbs", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}
-    {id:16, name:"cabbage (brunswick)", price:3.00, category:"salad", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}    
-    {id:16, name:"basil (genovese)", price:2.50, category:"Herbs", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}
-
-  
+    {id:1,  name:"rocket (cultivated)",          price:2.00, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg"},
+    {id:2,  name:"red lettuce (salad bowl)",     price:2.50, category:"Salad",      image:"https://www.harrisseeds.com/cdn/shop/files/01527_900x.jpg?v=1736905903"},
+    {id:3,  name:"carrot (Nantes 2)",            price:3.50, category:"Roots",      image:"https://gardenerspath.com/wp-content/uploads/2025/01/Carrots-Ready-to-Harvest-in-the-Garden-2.jpg"},
+    {id:4,  name:"tomato (agura)",               price:2.00, category:"Salad",      image:"https://media.istockphoto.com/id/512694992/photo/young-tomato-plant-growing-tomato-in-garden.jpg?s=170667a&w=0&k=20&c=2uXN2qMYOR1ZIuG1lQYFQZyGTN4CTLzaPHSL16JCsXY="},
+    {id:5,  name:"spinach (perpetual)",          price:2.50, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/02/41579623-2.jpg"},
+    {id:6,  name:"tomato (idyll)",               price:2.50, category:"Salad",      image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480"},
+    {id:7,  name:"chives",                       price:2.00, category:"Herbs",      image:"https://tse3.mm.bing.net/th/id/OIP.EAd4tdgoNtf83f9Pp4NOxAHaJi?pid=ImgDet&w=474&h=610&rs=1&o=7&rm=3&adlt=strict"},
+    {id:8,  name:"sorrel (garden)",              price:2.50, category:"Herbs",      image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg"},
+    {id:9,  name:"cauliflower (all season)",     price:2.50, category:"Salad",      image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg"},
+    {id:10, name:"french bean (Ferrari)",        price:2.00, category:"Beans",      image:"https://th.bing.com/th/id/R.11359ce623cfe6edaf7a6cdf82b046b5?rik=cc2fJ4eQCnTMgQ&pid=ImgRaw&r=0&adlt=strict"},
+    {id:11, name:"broccoli (Calabrese)",         price:2.50, category:"Salad",      image:"https://tse2.mm.bing.net/th/id/OIP.YJ3Bqpw2MQwej-8tE43ePgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3&adlt=strict"},
+    {id:12, name:"beetroot (Detroit)",           price:2.00, category:"Roots",      image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2"},
+    {id:13, name:"swiss chard (mixed)",          price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b"},
+    {id:14, name:"carrot (Cosmic purple)",       price:2.50, category:"Roots",      image:"https://images.unsplash.com/photo-1560807707-8cc77767d783"},
+    {id:15, name:"curly kale (Nero Di Toscana)", price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76"},
+    {id:16, name:"parsley",                      price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"},
+    {id:17, name:"cabbage (brunswick)",          price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1518977956815-dee0064f6a5a"},
+    {id:18, name:"basil (genovese)",             price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1515586838455-8f8f940d6853"},
+    {id:19, name:"mixed herb seeds",             price:2.20, category:"Seeds",      image:"https://images.unsplash.com/photo-1457530378978-8bac673b8062"},
+    {id:20, name:"starter gift box",             price:9.99, category:"Gift Boxes", image:"https://images.unsplash.com/photo-1542838132-92c53300491e"}
   ];
 
   let cart = []; // {productId, qty}
   let currentCategory = 'All';
   let currentSearch = '';
+
+  function normaliseCategory(cat) {
+    return String(cat || '').trim().toLowerCase();
+  }
 
   function saveCart() {
     localStorage.setItem('roots_cart', JSON.stringify(cart));
@@ -407,11 +501,8 @@
   function loadCart() {
     const data = localStorage.getItem('roots_cart');
     if (data) {
-      try {
-        cart = JSON.parse(data);
-      } catch(e) {
-        cart = [];
-      }
+      try { cart = JSON.parse(data) || []; }
+      catch (e) { cart = []; }
     }
   }
 
@@ -420,29 +511,39 @@
     list.innerHTML = '';
 
     const searchLower = currentSearch.trim().toLowerCase();
+    const currentCatLower = normaliseCategory(currentCategory);
 
     products.forEach((p) => {
-      if (currentCategory !== 'All' && p.category !== currentCategory) return;
+      if (currentCategory !== 'All' && normaliseCategory(p.category) !== currentCatLower) return;
       if (searchLower && !p.name.toLowerCase().includes(searchLower)) return;
 
       list.innerHTML += `
         <div class="card">
-          <img src="${p.image}" />
+          <img src="${p.image}" alt="${p.name}"
+               onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Unavailable';" />
           <h3>${p.name}</h3>
           <p><strong>${p.category}</strong></p>
-          <p>£${p.price.toFixed(2)}</p>
+          <p>£${Number(p.price).toFixed(2)}</p>
           <button onclick="addItem(${p.id})">Add to Cart</button>
         </div>`;
     });
+
+    if (!list.innerHTML.trim()) {
+      list.innerHTML = `
+        <div style="padding:20px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+          <strong>No plants found.</strong> Try another search or category.
+        </div>`;
+    }
   }
 
   function addItem(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
     const existing = cart.find(item => item.productId === productId);
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push({productId, qty:1});
-    }
+    if (existing) existing.qty += 1;
+    else cart.push({productId, qty: 1});
+
     updateCart();
   }
 
@@ -453,9 +554,7 @@
 
   function changeQty(index, delta) {
     cart[index].qty += delta;
-    if (cart[index].qty <= 0) {
-      cart.splice(index, 1);
-    }
+    if (cart[index].qty <= 0) cart.splice(index, 1);
     updateCart();
   }
 
@@ -468,7 +567,7 @@
       const product = products.find(p => p.id === c.productId);
       if (!product) return;
 
-      const lineTotal = product.price * c.qty;
+      const lineTotal = Number(product.price) * c.qty;
       total += lineTotal;
 
       div.innerHTML += `
@@ -501,16 +600,20 @@
   }
 
   function payNow() {
+    if (!cart.length) {
+      alert("Your cart is empty.");
+      return;
+    }
     alert("Payment Successful (Mock Stripe)");
     cart = [];
     updateCart();
     toggleCart();
   }
 
-  // UPDATED ADMIN CREDENTIALS HERE:
+  // ✅ Fixed: credentials with real &
   function login() {
-    const u = document.getElementById('user').value;
-    const p = document.getElementById('pass').value;
+    const u = document.getElementById('user').value.trim();
+    const p = document.getElementById('pass').value.trim();
 
     if (u === 'roots&shootsnursery@admin' && p === 'roots&shootsnursery@password') {
       isAdmin = true;
@@ -518,6 +621,7 @@
       document.getElementById('loginPanel').style.display = 'none';
       populateEditSelect();
       alert('Logged in as admin');
+      document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});
     } else {
       alert('Wrong login');
     }
@@ -527,6 +631,8 @@
     isAdmin = false;
     document.getElementById('adminPanel').style.display = 'none';
     document.getElementById('loginPanel').style.display = 'block';
+    document.getElementById('user').value = '';
+    document.getElementById('pass').value = '';
   }
 
   function addProduct() {
@@ -537,8 +643,8 @@
     const image = document.getElementById('image').value.trim();
     const category = document.getElementById('category').value;
 
-    if (!name || isNaN(priceValue) || !image) {
-      alert('Please fill in name, valid price, and image URL.');
+    if (!name || isNaN(priceValue) || priceValue <= 0) {
+      alert('Please enter a name and a valid price.');
       return;
     }
 
@@ -548,7 +654,7 @@
       id: newId,
       name,
       price: parseFloat(priceValue.toFixed(2)),
-      image,
+      image: image || 'https://via.placeholder.com/600x400?text=Plant',
       category
     });
 
@@ -558,17 +664,22 @@
 
     renderProducts();
     populateEditSelect();
+    alert('Product added.');
   }
 
   function populateEditSelect() {
     const select = document.getElementById('editSelect');
     select.innerHTML = '<option value="">-- Select --</option>';
-    products.forEach(p => {
-      const opt = document.createElement('option');
-      opt.value = p.id;
-      opt.textContent = p.name;
-      select.appendChild(opt);
-    });
+
+    products
+      .slice()
+      .sort((a,b) => a.name.localeCompare(b.name))
+      .forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = `${p.name} (£${Number(p.price).toFixed(2)})`;
+        select.appendChild(opt);
+      });
   }
 
   function loadProductForEdit() {
@@ -579,12 +690,14 @@
     if (!p) return;
 
     document.getElementById('editName').value = p.name;
-    document.getElementById('editPrice').value = p.price.toFixed(2);
+    document.getElementById('editPrice').value = Number(p.price).toFixed(2);
     document.getElementById('editImage').value = p.image;
     document.getElementById('editCategory').value = p.category;
   }
 
   function saveEditedProduct() {
+    if (!isAdmin) return;
+
     const id = parseInt(document.getElementById('editSelect').value);
     if (!id) {
       alert('Select a product to edit.');
@@ -599,19 +712,19 @@
     const image = document.getElementById('editImage').value.trim();
     const category = document.getElementById('editCategory').value;
 
-    if (!name || isNaN(priceValue) || !image) {
-      alert('Please fill in name, valid price, and image URL.');
+    if (!name || isNaN(priceValue) || priceValue <= 0) {
+      alert('Please enter a name and a valid price.');
       return;
     }
 
     p.name = name;
     p.price = parseFloat(priceValue.toFixed(2));
-    p.image = image;
+    p.image = image || 'https://via.placeholder.com/600x400?text=Plant';
     p.category = category;
 
     renderProducts();
     populateEditSelect();
-    updateCart(); // in case names/prices changed for items in cart
+    updateCart();
     alert('Product updated.');
   }
 
@@ -643,3 +756,4 @@
 
 </body>
 </html>
+``

@@ -244,7 +244,7 @@
 <body>
 
 <header>
-  <h1>egetable, vegetation & plants</h1>
+  <h1>vegetable, vegetation & plants</h1>
   <p>Growing a greener tomorrow</p>
   <div id="cartBtn" onclick="toggleCart()">Cart (<span id="count">0</span>)</div>
 </header>
@@ -271,6 +271,8 @@
     <button class="category-tab" data-cat="Roots" onclick="setCategory('Roots', this)">Roots</button>
     <button class="category-tab" data-cat="Salad" onclick="setCategory('Salad', this)">Salad</button>
     <button class="category-tab" data-cat="Beans" onclick="setCategory('Beans', this)">Beans</button>
+    <button class="category-tab" data-cat="seeds" onclick="setCategory('seeds', this)">seeds</button>
+    <button class="category-tab" data-cat="gift boxes" onclick="setCategory('gift boxes', this)">gift boxes</button>
   </div>
 
   <!-- Search Bar -->
@@ -343,6 +345,8 @@
           <option value="Roots">Roots</option>
           <option value="Salad">Salad</option>
           <option value="Beans">Beans</option>
+          <option value="seeds">seeds</option>
+          <option value="gift boxes">gift boxes</option>
         </select>
       </div>
     </div>
@@ -378,14 +382,18 @@
     {id:6, name:"tomato (idyll)", price:2.50, category:"Salad", image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480"},
     {id:7, name:"chives", price:2.00, category:"Herbs", image:"https://tse3.mm.bing.net/th/id/OIP.EAd4tdgoNtf83f9Pp4NOxAHaJi?pid=ImgDet&w=474&h=610&rs=1&o=7&rm=3&adlt=strict"},
     {id:8, name:"sorrel (garden)", price:2.50, category:"Herbs", image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg"},
-    {id:9, name:"cauliflower (all season)", price:2.50, category:"Salad", image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2"},
-    {id:10, name:"french bean (Ferrari)", price:2.00, category:"Beans", image:"https://images.unsplash.com/photo-1592928303084-5f8e1a5daebc"},
-    {id:11, name:"broccoli (Calabrese)", price:2.50, category:"Salad", image:"https://images.unsplash.com/photo-1582515073490-dc0c4f0b1f5b"},
+    {id:9, name:"cauliflower (all season)", price:2.50, category:"Salad", image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg"},
+    {id:10, name:"french bean (Ferrari)", price:2.00, category:"Beans", image:"https://th.bing.com/th/id/R.11359ce623cfe6edaf7a6cdf82b046b5?rik=cc2fJ4eQCnTMgQ&pid=ImgRaw&r=0&adlt=strict"},
+    {id:11, name:"broccoli (Calabrese)", price:2.50, category:"Salad", image:"https://tse2.mm.bing.net/th/id/OIP.YJ3Bqpw2MQwej-8tE43ePgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3&adlt=strict"},
     {id:12, name:"beetroot (Detroit)", price:2.00, category:"Roots", image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2"},
     {id:13, name:"swiss chard (mixed)", price:3.00, category:"Salad", image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b"},
     {id:14, name:"carrot (Cosmic purple)", price:2.50, category:"Roots", image:"https://images.unsplash.com/photo-1560807707-8cc77767d783"},
     {id:15, name:"curly kale (Nero Di Toscana)", price:3.00, category:"Salad", image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76"},
-    {id:16, name:"parsley", price:3.00, category:"Herbs", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}
+    {id:16, name:"parsley", price:2.50, category:"Herbs", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}
+    {id:16, name:"cabbage (brunswick)", price:3.00, category:"salad", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}    
+    {id:16, name:"basil (genovese)", price:2.50, category:"Herbs", image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"}
+
+  
   ];
 
   let cart = []; // {productId, qty}

@@ -1,34 +1,25 @@
-# Vegetable • Vegetation • Plants 🌱
+# Vegetable, Vegetation & Plants 🌱
 
-A small website project about plants — with simple notes, examples, and (soon) more images and mini guides.
+A fully client-side demo shop (HTML/CSS/JS) with:
+- Category tabs + search
+- Cart with quantity controls
+- Admin panel (add/edit/delete) with persistent products via localStorage
+- Mock checkout (no real payments)
 
-## What this site is
-This is my personal learning project where I collect easy explanations about:
-- **Plants** (the living organisms)
-- **Vegetables** (a cooking/food word people use for edible plant parts)
-- **Vegetation** (plant life growing in an area)
+## Publish on GitHub Pages
 
-I’m improving the site bit by bit as I learn.
+1. Put these files in the repo root:
+   - `index.html`
+   - `404.html`
+   - `.nojekyll`
 
-## Live site
-- https://djhpsawse.github.io/vegetable-vegetation-plants/
+2. In your GitHub repo:
+   - Go to **Settings → Pages**
+   - Under **Build and deployment**, choose **Deploy from a branch**
+   - Select branch: `main` (or `master`) and folder: `/ (root)`
+   - Save
 
-## What you’ll find (now / soon)
-**Now**
-- Basic plant content and images (work in progress)
+Your site will publish at:
+`https://YOUR-USERNAME.github.io/YOUR-REPO/`
 
-**Soon**
-- Plant profile cards (e.g., tomato, carrot, potato)
-- A glossary of common plant words
-- A mini quiz (root/leaf/fruit?)
-- A small photo gallery
-
-## Project status
-This project is in progress — updates will be added over time.
-
-## Credits
-If you used any sources or images, list them here.
-- (Add credits/links if needed)
-
-## Licence
-Choose a licence if you want others to reuse your work (optional).
+> GitHub Pages uses `index.html` as the entry file when publishing from a branch/folder.

@@ -1,483 +1,338 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vegetable, Vegetation & Plants</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Shop</title>
 
-  <meta name="description"
-        content="Vegetable, Vegetation & Plants — demo plant shop with cart, admin panel, and Stripe Payment Link checkout." />
+<style>
+:root{
+  --green:#3a7d44;
+  --dark:#2f5f35;
+  --bg:#f4f9f4;
+  --danger:#d62828;
+  --warn:#f4a261;
+}
 
-  <style>
-    :root{
-      --green-1:#3a7d44;
-      --green-2:#2f5f35;
-      --green-3:#244024;
-      --bg:#f4f9f4;
-      --card:#ffffff;
-      --muted:#486a48;
-      --danger:#d62828;
-      --blue:#0070ba;
-      --shadow:0 2px 10px rgba(0,0,0,.1);
-      --radius:18px;
-      --ring:0 0 0 3px rgba(58,125,68,.25);
-    }
+body{
+  margin:0;
+  font-family:system-ui;
+  background:var(--bg);
+}
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--green-3);
-    }
+/* HEADER */
+header{
+  background:var(--green);
+  color:#fff;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    header{
-      position:sticky;top:0;z-index:900;
-      background:var(--green-1);color:#fff;
-      box-shadow:var(--shadow);
-    }
+.pill{
+  background:#fff;
+  padding:10px 15px;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#333;
+}
 
-    .header-inner{
-      max-width:1100px;
-      margin:auto;
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
+/* HERO */
+.hero{
+  padding:40px;
+  text-align:center;
+  color:#fff;
+  background:url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735") center/cover;
+}
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+/* CONTROLS */
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:20px;
+}
 
-    .pill-link,.pill-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:14px;
-      background:#fff;
-      color:var(--green-3);
-      font-weight:bold;
-      border:none;
-      cursor:pointer;
-      text-decoration:none;
-      box-shadow:0 2px 8px rgba(0,0,0,.2);
-    }
-    .pill-link:hover,.pill-btn:hover{background:#e8f2e8}
-    .pill-btn:focus-visible,.pill-link:focus-visible{outline:none;box-shadow:var(--ring)}
+input,select{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
 
-    .brand{text-align:center}
-    .brand h1{margin:0;font-size:28px}
-    .brand p{margin:6px 0 0;opacity:.95}
+/* CATEGORY */
+.categories{
+  padding:0 20px;
+}
+.categories button{
+  margin:5px;
+  padding:8px 14px;
+  border-radius:20px;
+  border:1px solid var(--green);
+  background:#fff;
+  cursor:pointer;
+}
+.categories .active{
+  background:var(--green);
+  color:#fff;
+}
 
-    nav{
-      position:sticky;top:72px;z-index:850;
-      display:flex;gap:6px;justify-content:center;
-      background:var(--green-2);padding:8px;
-    }
-    nav button{
-      background:rgba(255,255,255,.12);
-      color:#fff;border:none;
-      padding:10px 16px;
-      border-radius:12px;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    nav button.active{background:#4caf50}
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:20px;
+}
 
-    .hero{
-      min-height:260px;
-      background:url("https://raw.githubusercontent.com/djhpsawse/vegetable-vegetation-plants/refs/heads/main/Designer.png")
-                 center/cover;
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;text-align:center;
-      text-shadow:0 2px 6px rgba(0,0,0,.7);
-      padding:20px;
-    }
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.1);
+  transition:.3s;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
 
-    .container{max-width:1100px;margin:auto;padding:20px}
-    .section{display:none}
-    .section.active{display:block}
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+}
 
-    .toolbar{
-      display:flex;gap:12px;flex-wrap:wrap;margin-top:14px
-    }
-    .field{flex:1 1 240px;display:flex;flex-direction:column;gap:6px}
-    label{font-size:13px;font-weight:bold;color:#355c35}
+/* BADGES */
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  padding:5px 10px;
+  border-radius:10px;
+  color:#fff;
+  font-size:12px;
+}
+.out{background:var(--danger);}
+.low{background:var(--warn);}
 
-    input,select,textarea{
-      padding:10px 12px;border-radius:14px;
-      border:1px solid #cfe0cf;font-family:inherit
-    }
-    input:focus,select:focus,textarea:focus{
-      outline:none;border-color:var(--green-1);box-shadow:var(--ring)
-    }
+/* BUTTON */
+.btn{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:5px;
+}
+.green{background:var(--green);color:#fff;}
+.grey{background:#ccc;}
 
-    .category-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
-    .category-tab{
-      padding:8px 14px;border-radius:999px;
-      border:1px solid var(--green-1);
-      background:#fff;color:var(--green-1);
-      font-weight:bold;cursor:pointer
-    }
-    .category-tab.active{background:var(--green-1);color:#fff}
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.modal-content{
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:400px;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-    }
+/* ADMIN */
+.admin{display:none;padding:20px;}
+.admin input{display:block;margin:5px 0;}
 
-    .card{
-      background:#fff;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px;
-      display:flex;flex-direction:column;gap:10px;
-      text-align:center;
-    }
-
-    .card img{
-      width:100%;height:160px;
-      object-fit:cover;border-radius:14px;
-    }
-
-    .meta{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
-    .price{font-weight:bold}
-
-    .btn{
-      padding:10px 14px;
-      border-radius:14px;
-      border:none;
-      font-weight:bold;
-      cursor:pointer;
-      background:var(--green-1);
-      color:#fff;
-    }
-    .btn:hover{background:var(--green-2)}
-    .btn-danger{background:var(--danger)}
-    .btn-blue{background:var(--blue)}
-    .btn-ghost{background:transparent;border:1px solid #cfe0cf;color:var(--green-3)}
-
-    /* CART DRAWER */
-    #backdrop{
-      position:fixed;inset:0;
-      background:rgba(0,0,0,.35);
-      opacity:0;pointer-events:none;
-      transition:.25s;z-index:950;
-    }
-    #backdrop.show{opacity:1;pointer-events:auto}
-
-    #cartPanel{
-      position:fixed;right:-420px;top:0;
-      width:400px;max-width:95vw;height:100%;
-      background:#fff;z-index:1000;
-      box-shadow:-2px 0 16px rgba(0,0,0,.3);
-      padding:16px;
-      transition:.28s;
-      overflow-y:auto;
-    }
-    #cartPanel.open{right:0}
-
-    .cart-header{display:flex;justify-content:space-between;align-items:center}
-
-    .cart-item{border-bottom:1px solid #eee;padding:10px 0}
-    .cart-top{display:flex;justify-content:space-between;font-weight:bold}
-
-    .qty-controls{display:flex;gap:8px;align-items:center}
-    .qty-btn{
-      padding:6px 12px;border-radius:12px;
-      background:var(--green-1);color:#fff;border:none;
-      cursor:pointer;font-weight:bold
-    }
-
-    .toast{
-      position:fixed;left:50%;bottom:18px;
-      transform:translateX(-50%);
-      background:#1f2d1f;color:#fff;
-      padding:10px 16px;
-      border-radius:999px;
-      opacity:0;pointer-events:none;
-      transition:.25s;
-      z-index:2000;
-    }
-    .toast.show{opacity:1}
-
-    @media(max-width:640px){
-      .cards{grid-template-columns:1fr}
-      nav{top:68px}
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="topbar">
-      <a class="pill-link"
-         href="https://djhpsawse.github.io/about-my-site/"
-         target="_blank" rel="noopener noreferrer">
-        About this site
-      </a>
-
-      <button class="pill-btn" id="cartBtn">
-        Cart (<span id="count">0</span>)
-      </button>
-    </div>
-
-    <div class="brand">
-      <h1>Vegetable, Vegetation & Plants</h1>
-      <p>Growing a greener tomorrow</p>
-    </div>
+  <h2>🌿 Plant Shop</h2>
+  <div>
+    <a class="pill" href="https://forms.office.com/r/yBedHrsQ1n" target="_blank">Order Online</a>
+    <button class="pill" onclick="login()">Admin</button>
   </div>
 </header>
 
-<nav>
-  <button id="shopNavBtn" class="active">Shop</button>
-  <button id="adminNavBtn">Admin</button>
-</nav>
-
-<section class="hero">
-  <div>
-    <h2>Fresh plants & seeds</h2>
-    <p>Browse, add to cart, manage products, and test Stripe checkout.</p>
-  </div>
-</section>
-
-<!-- SHOP -->
-<div class="container section active" id="shopSection">
-  <h2>Shop Plants</h2>
-
-  <div class="toolbar">
-    <div class="field" style="flex:2">
-      <label>Search</label>
-      <input id="searchBar" placeholder="Search plants…" />
-    </div>
-    <div class="field">
-      <label>Sort</label>
-      <select id="sortSelect">
-        <option value="name_asc">Name (A–Z)</option>
-        <option value="name_desc">Name (Z–A)</option>
-        <option value="price_asc">Price (Low–High)</option>
-        <option value="price_desc">Price (High–Low)</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="category-tabs" id="categoryTabs"></div>
-  <div class="cards" id="productList"></div>
+<div class="hero">
+  <h1>Fresh Plants & Seeds</h1>
 </div>
 
-<!-- CART -->
-<div id="backdrop"></div>
+<div id="shop">
 
-<div id="cartPanel" role="dialog" aria-modal="true">
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-    <button class="pill-btn" id="closeCartBtn">Close</button>
-  </div>
-
-  <div id="cartItems"></div>
-  <h3>Total: £<span id="total">0.00</span></h3>
-
-  <button class="btn btn-blue" id="payBtn">Pay Now</button>
-  <button class="btn btn-ghost" id="clearCartBtn" style="width:100%;margin-top:10px">
-    Clear Cart
-  </button>
+<div class="controls">
+  <input id="search" placeholder="Search...">
+  <select id="sort">
+    <option value="name">Name</option>
+    <option value="price">Price</option>
+  </select>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="categories" id="cats"></div>
+<div class="grid" id="grid"></div>
+
+</div>
+
+<!-- ADMIN -->
+<div class="admin" id="admin">
+<h2>Admin Panel</h2>
+
+<input id="n" placeholder="Name">
+<input id="p" placeholder="Price">
+<input id="c" placeholder="Category">
+<input id="i" placeholder="Image URL">
+<input id="s" placeholder="Stock number">
+
+<button onclick="add()">Add</button>
+
+<div id="adminList"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
 
 <script>
-(() => {
-"use strict";
+const PASS="admin123";
+const KEY="plants_v3";
+const FORM="https://forms.office.com/r/yBedHrsQ1n";
 
-/* ================= CONFIG ================= */
-const STRIPE_PAYMENT_LINK = ""; // paste TEST Payment Link here
-const CART_KEY = "vvp_cart";
-const PRODUCTS_KEY = "vvp_products";
-
-/* ================= DEFAULT PRODUCTS ================= */
-const DEFAULT_PRODUCTS = [
-  {id:1,name:"Rocket (cultivated)",price:2,category:"Salad",image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg"},
-  {id:2,name:"Chives",price:2,category:"Herbs",image:"https://images.unsplash.com/photo-1524592911903-1f3b0b5a59f5"},
-  {id:3,name:"rocket (cultivated)",price:2.00, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg"},
-  {id:4,name:"red lettuce (salad bowl)",price:2.50, category:"Salad",      image:"https://www.harrisseeds.com/cdn/shop/files/01527_900x.jpg?v=1736905903"},
-  {id:5,name:"carrot (Nantes 2)",price:3.50, category:"Roots",      image:"https://gardenerspath.com/wp-content/uploads/2025/01/Carrots-Ready-to-Harvest-in-the-Garden-2.jpg"},
-  {id:6,name:"tomato (agura)",price:2.00, category:"Salad",      image:"https://media.istockphoto.com/id/512694992/photo/young-tomato-plant-growing-tomato-in-garden.jpg?s=170667a&w=0&k=20&c=2uXN2qMYOR1ZIuG1lQYFQZyGTN4CTLzaPHSL16JCsXY="},
-  {id:7,name:"spinach (perpetual)",price:2.50, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/02/41579623-2.jpg"},
-  {id:8,name:"tomato (idyll)",price:2.50, category:"Salad",      image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480"},
-  {id:9,name:"chives",price:2.00, category:"Herbs",      image:"https://tse3.mm.bing.net/th/id/OIP.EAd4tdgoNtf83f9Pp4NOxAHaJi?pid=ImgDet&w=474&h=610&rs=1&o=7&rm=3&adlt=strict"},
-  {id:10,name:"sorrel (garden)",price:2.50, category:"Herbs",      image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg"},
-  {id:11,name:"cauliflower (all season)",price:2.50, category:"Salad",      image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg"},
-  {id:12,name:"french bean (Ferrari)",price:2.00, category:"Beans",      image:"https://th.bing.com/th/id/R.11359ce623cfe6edaf7a6cdf82b046b5?rik=cc2fJ4eQCnTMgQ&pid=ImgRaw&r=0&adlt=strict"},
-  {id:13,name:"broccoli (Calabrese)",price:2.50, category:"Salad",      image:"https://tse2.mm.bing.net/th/id/OIP.YJ3Bqpw2MQwej-8tE43ePgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3&adlt=strict"},
-  {id:14,name:"beetroot (Detroit)",price:2.00, category:"Roots",      image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2"},
-  {id:15,name:"swiss chard (mixed)",price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b"},
-  {id:16,name:"carrot (Cosmic purple)",price:2.50, category:"Roots",      image:"https://images.unsplash.com/photo-1560807707-8cc77767d783"},
-  {id:17,name:"curly kale (Nero Di Toscana)",price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76"},
-  {id:18,name:"parsley",price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6"},
-  {id:19,name:"cabbage (brunswick)",price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1518977956815-dee0064f6a5a"},
-  {id:20,name:"basil (genovese)",price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1515586838455-8f8f940d6853"},
-  {id:21,name:"mixed herb seeds",price:2.20, category:"Seeds",      image:"https://images.unsplash.com/photo-1457530378978-8bac673b8062"},
-  {id:22,name:"starter gift box",price:9.99, category:"Gift Boxes", image:"https://images.unsplash.com/photo-1542838132-92c53300491e"}
+let products=JSON.parse(localStorage.getItem(KEY))||[
+{id:1,name:"Tomato",price:2.5,cat:"Vegetables",img:"https://images.unsplash.com/photo-1592928302636-c83cf1a3a9f4",stock:10,desc:"Juicy tomatoes"},
+{id:2,name:"Carrot",price:3,cat:"Roots",img:"https://images.unsplash.com/photo-1582515073490-dc6a7a66b3c3",stock:2,desc:"Crunchy carrots"}
 ];
 
-/* ================= STATE ================= */
-let products = [...DEFAULT_PRODUCTS];
-let cart = [];
-let currentCategory = "All";
-let currentSearch = "";
-let currentSort = "name_asc";
+let currentCat="All";
 
-/* ================= HELPERS ================= */
-const $ = id => document.getElementById(id);
-const money = n => Number(n||0).toFixed(2);
+function save(){localStorage.setItem(KEY,JSON.stringify(products));}
 
-/* ================= LOAD / SAVE ================= */
-const load = (k,d)=>JSON.parse(localStorage.getItem(k)||JSON.stringify(d));
-const save = (k,v)=>localStorage.setItem(k,JSON.stringify(v));
+/* FILTERS */
+function renderCats(){
+  const cats=["All",...new Set(products.map(p=>p.cat))];
+  const el=document.getElementById("cats");
+  el.innerHTML="";
+  cats.forEach(c=>{
+    const b=document.createElement("button");
+    b.textContent=c;
+    if(c===currentCat)b.classList.add("active");
+    b.onclick=()=>{currentCat=c;render();};
+    el.appendChild(b);
+  });
+}
 
-products = load(PRODUCTS_KEY, products);
-cart = load(CART_KEY, cart);
+/* SHOP */
+function render(){
+  renderCats();
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
 
-/* ================= CART ================= */
-let lastFocus = null;
+  let list=[...products];
 
-function toggleCart(open){
-  const panel = $("cartPanel");
-  const shouldOpen = open ?? !panel.classList.contains("open");
+  const search=document.getElementById("search").value.toLowerCase();
+  list=list.filter(p=>p.name.toLowerCase().includes(search));
+  if(currentCat!=="All")list=list.filter(p=>p.cat===currentCat);
 
-  if(shouldOpen){
-    lastFocus = document.activeElement;
-    document.body.style.overflow = "hidden";
+  if(document.getElementById("sort").value==="price"){
+    list.sort((a,b)=>a.price-b.price);
   } else {
-    document.body.style.overflow = "";
-    lastFocus && lastFocus.focus();
+    list.sort((a,b)=>a.name.localeCompare(b.name));
   }
 
-  panel.classList.toggle("open", shouldOpen);
-  $("backdrop").classList.toggle("show", shouldOpen);
-  if(shouldOpen) $("closeCartBtn").focus();
-}
+  list.forEach(p=>{
+    const div=document.createElement("div");
+    div.className="card";
 
-function updateCart(){
-  $("cartItems").innerHTML = "";
-  let total = 0;
+    let badge="";
+    if(p.stock===0) badge='<div class="badge out">Out of stock</div>';
+    else if(p.stock<5) badge='<div class="badge low">Low stock</div>';
 
-  cart.forEach((c,i)=>{
-    const p = products.find(x=>x.id===c.id);
-    if(!p) return;
-    total += p.price * c.qty;
-
-    const div = document.createElement("div");
-    div.className="cart-item";
-    div.innerHTML = `
-      <div class="cart-top">
-        <span>${p.name}</span>
-        <span>£${money(p.price*c.qty)}</span>
-      </div>
-      <div class="qty-controls">
-        <button class="qty-btn">-</button>
-        <span>Qty: ${c.qty}</span>
-        <button class="qty-btn">+</button>
-      </div>
-    `;
-    div.querySelectorAll("button")[0].onclick=()=>{c.qty--; if(c.qty<=0)cart.splice(i,1); updateCart();}
-    div.querySelectorAll("button")[1].onclick=()=>{c.qty++; updateCart();}
-    $("cartItems").appendChild(div);
-  });
-
-  $("count").textContent = cart.reduce((s,c)=>s+c.qty,0);
-  $("total").textContent = money(total);
-  save(CART_KEY, cart);
-}
-
-/* ================= PRODUCTS ================= */
-function renderProducts(){
-  const list = $("productList");
-  list.innerHTML = "";
-  const frag = document.createDocumentFragment();
-
-  let items = products.filter(p =>
-    (currentCategory==="All"||p.category===currentCategory) &&
-    p.name.toLowerCase().includes(currentSearch)
-  );
-
-  items.sort((a,b)=>{
-    if(currentSort==="price_asc")return a.price-b.price;
-    if(currentSort==="price_desc")return b.price-a.price;
-    if(currentSort==="name_desc")return b.name.localeCompare(a.name);
-    return a.name.localeCompare(b.name);
-  });
-
-  items.forEach(p=>{
-    const card = document.createElement("div");
-    card.className="card";
-    card.innerHTML=`
-      <img src="${p.image}" alt="${p.name}">
+    div.innerHTML=`
+      ${badge}
+      <img src="${p.img}">
       <h3>${p.name}</h3>
-      <div class="meta">
-        <span>${p.category}</span>
-        <span class="price">£${money(p.price)}</span>
-      </div>
-      <button class="btn">Add to Cart</button>
+      <p>£${p.price}</p>
+      <button class="btn green">View</button>
+      <a href="${FORM}" target="_blank">
+        <button class="btn ${p.stock? 'green':'grey'}" ${!p.stock?'disabled':''}>
+          Order
+        </button>
+      </a>
     `;
-    card.querySelector("button").onclick=()=>{
-      const found = cart.find(x=>x.id===p.id);
-      found ? found.qty++ : cart.push({id:p.id,qty:1});
-      updateCart();
-    };
-    frag.appendChild(card);
-  });
 
-  list.appendChild(frag);
+    div.querySelector(".green").onclick=()=>show(p);
+    grid.appendChild(div);
+  });
 }
 
-/* ================= EVENTS ================= */
-$("cartBtn").onclick=()=>toggleCart(true);
-$("closeCartBtn").onclick=()=>toggleCart(false);
-$("backdrop").onclick=()=>toggleCart(false);
+/* MODAL */
+function show(p){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalContent").innerHTML=`
+    <h2>${p.name}</h2>
+    <img src="${p.img}" style="width:100%">
+    <p>${p.desc}</p>
+    <p><b>£${p.price}</b></p>
+    <button onclick="closeModal()">Close</button>
+  `;
+}
+function closeModal(){document.getElementById("modal").style.display="none";}
 
-$("searchBar").oninput=e=>{
-  currentSearch=e.target.value.toLowerCase();
-  renderProducts();
-};
-$("sortSelect").onchange=e=>{
-  currentSort=e.target.value;
-  renderProducts();
-};
-
-$("clearCartBtn").onclick=()=>{
-  cart=[];
-  updateCart();
-};
-
-$("payBtn").onclick=()=>{
-  if(!cart.length) return alert("Cart is empty");
-  if(STRIPE_PAYMENT_LINK){
-    window.location.href = STRIPE_PAYMENT_LINK;
-  } else {
-    alert("Mock payment successful");
-    cart=[];
-    updateCart();
-    toggleCart(false);
+/* ADMIN */
+function login(){
+  const pw=prompt("Enter password:");
+  if(pw===PASS){
+    document.getElementById("shop").style.display="none";
+    document.getElementById("admin").style.display="block";
+    renderAdmin();
   }
-};
+}
 
-/* ================= INIT ================= */
-renderProducts();
-updateCart();
+function add(){
+  products.push({
+    id:Date.now(),
+    name:n.value,
+    price:+p.value,
+    cat:c.value,
+    img:i.value,
+    stock:+s.value,
+    desc:"New plant"
+  });
+  save();render();renderAdmin();
+}
 
-})();
+function renderAdmin(){
+  const el=document.getElementById("adminList");
+  el.innerHTML="";
+  products.forEach(p=>{
+    const d=document.createElement("div");
+    d.innerHTML=`
+      ${p.name} (${p.stock})
+      <button onclick="del(${p.id})">Delete</button>
+    `;
+    el.appendChild(d);
+  });
+}
+
+function del(id){
+  products=products.filter(p=>p.id!==id);
+  save();render();renderAdmin();
+}
+
+/* INIT */
+render();
 </script>
 
 </body>
 </html>
-``

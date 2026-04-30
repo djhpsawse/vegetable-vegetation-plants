@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vegetable, vegetation, & plants</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vegetable, Vegetation & Plants</title>
 
 <style>
 :root{
@@ -12,344 +12,945 @@
   --bg:#f4f9f4;
   --danger:#d62828;
   --warn:#f4a261;
+  --ink:#17301a;
 }
 
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:system-ui;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   background:var(--bg);
+  color:var(--ink);
 }
 
 /* HEADER */
 header{
   background:var(--green);
   color:#fff;
-  padding:15px;
+  padding:14px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
 }
+header h2{margin:0;font-size:18px}
+.header-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
 
+/* Pills / Buttons */
 .pill{
   background:#fff;
-  padding:10px 15px;
-  border-radius:20px;
+  padding:10px 14px;
+  border-radius:999px;
   text-decoration:none;
-  font-weight:bold;
+  font-weight:700;
   color:#333;
+  border:none;
+  cursor:pointer;
+}
+.pill:active{transform:translateY(1px)}
+.pill.cart{display:flex; gap:8px; align-items:center}
+.badge-dot{
+  min-width:22px;
+  height:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+  font-size:12px;
+  padding:0 8px;
 }
 
 /* HERO */
 .hero{
-  padding:40px;
+  padding:54px 18px;
   text-align:center;
   color:#fff;
   background:url("https://raw.githubusercontent.com/djhpsawse/vegetable-vegetation-plants/refs/heads/main/Designer.png") center/cover;
 }
+.hero h1{margin:0;font-size:34px; text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hero p{margin:10px 0 0; opacity:.95; text-shadow:0 2px 18px rgba(0,0,0,.35)}
 
 /* CONTROLS */
 .controls{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  padding:20px;
+  padding:18px;
 }
-
-input,select{
+input,select,textarea{
   padding:10px;
-  border-radius:10px;
-  border:1px solid #ccc;
+  border-radius:12px;
+  border:1px solid #cfd9cf;
+  font-size:16px;
+  outline:none;
+  background:#fff;
 }
+input:focus,select:focus,textarea:focus{border-color:var(--green); box-shadow:0 0 0 3px rgba(58,125,68,.15)}
 
-/* CATEGORY */
-.categories{
-  padding:0 20px;
-}
+/* CATEGORIES */
+.categories{padding:0 18px 10px}
 .categories button{
   margin:5px;
   padding:8px 14px;
-  border-radius:20px;
+  border-radius:999px;
   border:1px solid var(--green);
   background:#fff;
   cursor:pointer;
+  font-weight:600;
 }
-.categories .active{
-  background:var(--green);
-  color:#fff;
-}
+.categories .active{background:var(--green); color:#fff}
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  padding:18px;
 }
 
 /* CARD */
 .card{
   background:#fff;
-  border-radius:15px;
-  padding:15px;
+  border-radius:18px;
+  padding:14px;
   text-align:center;
-  box-shadow:0 4px 15px rgba(0,0,0,.1);
-  transition:.3s;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+  transition:.25s;
   position:relative;
 }
-.card:hover{
-  transform:translateY(-5px);
-}
-
+.card:hover{transform:translateY(-5px)}
 .card img{
   width:100%;
-  height:150px;
+  height:155px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
 }
+.card h3{margin:10px 0 6px; font-size:18px}
+.card p{margin:0 0 10px; opacity:.9}
 
-/* BADGES */
-.badge{
+/* STOCK BADGES */
+.stock-badge{
   position:absolute;
-  top:10px;
-  left:10px;
+  top:12px;
+  left:12px;
   padding:5px 10px;
-  border-radius:10px;
+  border-radius:999px;
   color:#fff;
   font-size:12px;
+  font-weight:800;
 }
-.out{background:var(--danger);}
-.low{background:var(--warn);}
+.out{background:var(--danger)}
+.low{background:var(--warn); color:#2d1b00}
 
-/* BUTTON */
+/* Buttons */
 .btn{
-  padding:10px;
+  padding:10px 12px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   cursor:pointer;
-  margin-top:5px;
+  margin-top:8px;
+  width:100%;
+  font-weight:800;
 }
-.green{background:var(--green);color:#fff;}
-.grey{background:#ccc;}
+.green{background:var(--green); color:#fff}
+.dark{background:var(--dark); color:#fff}
+.grey{background:#d9d9d9; color:#333}
+.btn:disabled{opacity:.7; cursor:not-allowed}
 
-/* MODAL */
+/* MODALS */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.55);
   display:none;
   align-items:center;
   justify-content:center;
+  padding:18px;
+  z-index:50;
 }
 .modal-content{
   background:#fff;
-  padding:20px;
-  border-radius:15px;
-  width:90%;
-  max-width:400px;
+  padding:16px;
+  border-radius:18px;
+  width:100%;
+  max-width:520px;
+  max-height:85vh;
+  overflow:auto;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
 }
+.modal-content h2{margin:0 0 10px}
+.modal-content img{width:100%; border-radius:12px}
+.row{display:flex; gap:10px; flex-wrap:wrap}
+.row > *{flex:1; min-width:200px}
+.hr{height:1px; background:#e7efe7; margin:12px 0}
+
+/* CART */
+.cart-item{
+  display:grid;
+  grid-template-columns: 56px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eef4ee;
+}
+.cart-item:last-child{border-bottom:none}
+.cart-item img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.qty-controls{display:flex; gap:6px; align-items:center; justify-content:flex-end}
+.qty-controls button{
+  width:32px;height:32px;border-radius:10px;border:1px solid #cfe2cf;background:#fff;cursor:pointer;font-weight:900
+}
+.qty-controls span{min-width:26px; text-align:center; font-weight:900}
+.total-line{display:flex; justify-content:space-between; font-weight:900; margin:10px 0}
 
 /* ADMIN */
-.admin{display:none;padding:20px;}
-.admin input{display:block;margin:5px 0;}
-
+.admin{
+  display:none;
+  padding:18px;
+}
+.admin h2{margin:0 0 10px}
+.tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+.tab{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--green);
+  background:#fff;
+  cursor:pointer;
+  font-weight:800;
+}
+.tab.active{background:var(--green); color:#fff}
+.panel{background:#fff; border-radius:18px; padding:14px; box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.small{font-size:12px; opacity:.75}
+.admin-list-item{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 0; border-bottom:1px solid #eef4ee; gap:10px;
+}
+.admin-list-item:last-child{border-bottom:none}
+.admin-actions{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+.admin-actions button{width:auto}
+select.status{padding:8px 10px; border-radius:12px}
+.export-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h2>Vegetable, vegetation, & plants</h2>
-  <div>
-    <a class="pill" href="https://forms.office.com/r/yBedHrsQ1n" target="_blank">Order Online</a>
+  <h2>Vegetable, vegetation &amp; plants</h2>
+  <div class="header-actions">
+    <button class="pill cart" onclick="openCart()">
+      🧺 Basket <span class="badge-dot" id="cartCount">0</span>
+    </button>
     <button class="pill" onclick="login()">Admin</button>
   </div>
 </header>
 
 <div class="hero">
-  <h1>Fresh Plants & Seeds</h1>
+  <h1>Fresh Plants &amp; Seeds</h1>
+  <p>Browse, add to basket, checkout — orders tracked in the admin panel.</p>
 </div>
 
+<!-- SHOP -->
 <div id="shop">
+  <div class="controls">
+    <input id="search" placeholder="Search plants..." />
+    <select id="sort">
+      <option value="name">Sort by name</option>
+      <option value="price">Sort by price</option>
+    </select>
+  </div>
 
-<div class="controls">
-  <input id="search" placeholder="Search...">
-  <select id="sort">
-    <option value="name">Name</option>
-    <option value="price">Price</option>
-  </select>
-</div>
-
-<div class="categories" id="cats"></div>
-<div class="grid" id="grid"></div>
-
+  <div class="categories" id="cats"></div>
+  <div class="grid" id="grid"></div>
 </div>
 
 <!-- ADMIN -->
 <div class="admin" id="admin">
-<h2>Admin Panel</h2>
+  <h2>Admin</h2>
+  <p class="small">Orders + stock are stored in this browser’s localStorage. Anyone can view the password in page source — use only for simple setups.</p>
 
-<input id="n" placeholder="Name">
-<input id="p" placeholder="Price">
-<input id="c" placeholder="Category">
-<input id="i" placeholder="Image URL">
-<input id="s" placeholder="Stock number">
+  <div class="tabs">
+    <button class="tab active" id="tabProducts" onclick="showTab('products')">Products</button>
+    <button class="tab" id="tabOrders" onclick="showTab('orders')">Orders</button>
+    <button class="tab" onclick="logout()">Exit admin</button>
+  </div>
 
-<button onclick="add()">Add</button>
+  <div class="panel" id="panelProducts">
+    <h3 style="margin:0 0 8px">Add / Manage Products</h3>
 
-<div id="adminList"></div>
+    <div class="row">
+      <input id="n" placeholder="Name" />
+      <input id="p" placeholder="Price (£)" type="number" step="0.01" />
+    </div>
+    <div class="row">
+      <input id="c" placeholder="Category (e.g. Salad, Herbs...)" />
+      <input id="s" placeholder="Stock" type="number" />
+    </div>
+    <input id="i" placeholder="Image URL" />
+    <textarea id="d" placeholder="Description" rows="3"></textarea>
+    <button class="btn green" onclick="addProduct()">Add product</button>
+
+    <div class="hr"></div>
+    <div id="adminProductList"></div>
+  </div>
+
+  <div class="panel" id="panelOrders" style="display:none">
+    <h3 style="margin:0 0 8px">Orders</h3>
+    <div class="export-row">
+      <button class="btn dark" style="width:auto" onclick="exportOrdersCSV()">Export Orders CSV</button>
+      <button class="btn grey" style="width:auto" onclick="clearAllOrders()">Clear all orders</button>
+    </div>
+    <div class="hr"></div>
+    <div id="adminOrderList"></div>
+  </div>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content" id="modalContent"></div>
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal" onclick="closeModal(event,'productModal')">
+  <div class="modal-content" id="productModalContent"></div>
+</div>
+
+<!-- CART MODAL -->
+<div class="modal" id="cartModal" onclick="closeModal(event,'cartModal')">
+  <div class="modal-content" id="cartModalContent"></div>
 </div>
 
 <script>
-const PASS="admin123";
-const KEY="plants_v3";
-const FORM="https://forms.office.com/r/yBedHrsQ1n";
+/* ========= SETTINGS ========= */
+const PASS = "admin123";
 
-let products=JSON.parse(localStorage.getItem(KEY))||[
-    {id:1,  name:"rocket (cultivated)",          price:2.00, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg"},
-    {id:2,  name:"red lettuce (salad bowl)",     price:2.50, category:"Salad",      image:"https://www.harrisseeds.com/cdn/shop/files/01527_900x.jpg?v=1736905903"},
-    {id:3,  name:"carrot (Nantes 2)",            price:3.50, category:"Roots",      image:"https://gardenerspath.com/wp-content/uploads/2025/01/Carrots-Ready-to-Harvest-in-the-Garden-2.jpg"},
-    {id:4,  name:"tomato (agura)",               price:2.00, category:"Salad",      image:"https://media.istockphoto.com/id/512694992/photo/young-tomato-plant-growing-tomato-in-garden.jpg?s=170667a&w=0&k=20&c=2uXN2qMYOR1ZIuG1lQYFQZyGTN4CTLzaPHSL16JCsXY="},
-    {id:5,  name:"spinach (perpetual)",          price:2.50, category:"Salad",      image:"https://premierseedsdirect.com/wp-content/uploads/2017/02/41579623-2.jpg"},
-    {id:6,  name:"tomato (idyll)",               price:2.50, category:"Salad",      image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480"},
-    {id:7,  name:"chives",                       price:2.00, category:"Herbs",      image:"https://images.unsplash.com/photo-1524592911903-1f3b0b5a59f5?auto=format&fit=crop&w=1200&q=60"},
-    {id:8,  name:"sorrel (garden)",              price:2.50, category:"Herbs",      image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg"},
-    {id:9,  name:"cauliflower (all season)",     price:2.50, category:"Salad",      image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg"},
-    {id:10, name:"french bean (Ferrari)",        price:2.00, category:"Beans",      image:"https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1200&q=60"},
-    {id:11, name:"broccoli (Calabrese)",         price:2.50, category:"Salad",      image:"https://images.unsplash.com/photo-1582515073490-dc84e2060b44?auto=format&fit=crop&w=1200&q=60"},
-    {id:12, name:"beetroot (Detroit)",           price:2.00, category:"Roots",      image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=1200&q=60"},
-    {id:13, name:"swiss chard (mixed)",          price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b?auto=format&fit=crop&w=1200&q=60"},
-    {id:14, name:"carrot (Cosmic purple)",       price:2.50, category:"Roots",      image:"https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1200&q=60"},
-    {id:15, name:"curly kale (Nero Di Toscana)", price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76?auto=format&fit=crop&w=1200&q=60"},
-    {id:16, name:"parsley",                      price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6?auto=format&fit=crop&w=1200&q=60"},
-    {id:17, name:"cabbage (brunswick)",          price:3.00, category:"Salad",      image:"https://images.unsplash.com/photo-1518977956815-dee0064f6a5a?auto=format&fit=crop&w=1200&q=60"},
-    {id:18, name:"basil (genovese)",             price:2.50, category:"Herbs",      image:"https://images.unsplash.com/photo-1515586838455-8f8f940d6853?auto=format&fit=crop&w=1200&q=60"},
-    {id:19, name:"mixed herb seeds",             price:2.20, category:"Seeds",      image:"https://images.unsplash.com/photo-1457530378978-8bac673b8062?auto=format&fit=crop&w=1200&q=60"},
-    {id:20, name:"starter gift box",             price:9.99, category:"Gift Boxes", image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=60"}
+/* Storage keys */
+const PRODUCTS_KEY = "plants_products_v2";
+const CART_KEY     = "plants_cart_v2";
+const ORDERS_KEY   = "plants_orders_v2";
+
+/* ========= DATA ========= */
+const defaultProducts = [
+  {id:1,  name:"rocket (cultivated)",          price:2.00, category:"Salad",      stock:10, image:"https://premierseedsdirect.com/wp-content/uploads/2017/12/Rocket-Cultivated-2-021225-iStock-SQ-PS-1024x1024.jpg", desc:"Peppery salad leaf. Quick to grow."},
+  {id:2,  name:"red lettuce (salad bowl)",     price:2.50, category:"Salad",      stock:10, image:"https://www.harrisseeds.com/cdn/shop/files/01527_900x.jpg?v=1736905903", desc:"Loose-leaf lettuce with rich colour."},
+  {id:3,  name:"carrot (Nantes 2)",            price:3.50, category:"Roots",      stock:10, image:"https://gardenerspath.com/wp-content/uploads/2025/01/Carrots-Ready-to-Harvest-in-the-Garden-2.jpg", desc:"Sweet carrots, great for early harvest."},
+  {id:4,  name:"tomato (agura)",               price:2.00, category:"Salad",      stock:10, image:"https://media.istockphoto.com/id/512694992/photo/young-tomato-plant-growing-tomato-in-garden.jpg?s=170667a&w=0&k=20&c=2uXN2qMYOR1ZIuG1lQYFQZyGTN4CTLzaPHSL16JCsXY=", desc:"Strong tomato plant starter."},
+  {id:5,  name:"spinach (perpetual)",          price:2.50, category:"Salad",      stock:10, image:"https://premierseedsdirect.com/wp-content/uploads/2017/02/41579623-2.jpg", desc:"Harvest again and again."},
+  {id:6,  name:"tomato (idyll)",               price:2.50, category:"Salad",      stock:10, image:"https://www.jungepflanzen.de/media/5d/2c/99/1701199480/solanum_lycopersicum_idyll_1.jpg?ts=1701199480", desc:"Reliable tomato variety for the garden."},
+  {id:7,  name:"chives",                       price:2.00, category:"Herbs",      stock:10, image:"https://images.unsplash.com/photo-1524592911903-1f3b0b5a59f5?auto=format&fit=crop&w=1200&q=60", desc:"Great for salads and garnish."},
+  {id:8,  name:"sorrel (garden)",              price:2.50, category:"Herbs",      stock:10, image:"https://www.epicgardening.com/wp-content/uploads/2023/02/sorrel-plant-1200x667.jpeg", desc:"Lemony leaf – perfect in soups."},
+  {id:9,  name:"cauliflower (all season)",     price:2.50, category:"Salad",      stock:10, image:"https://growplant.org/wp-content/uploads/2024/11/cauliflower-life-cycle-2.jpg", desc:"All-season cauliflower starter."},
+  {id:10, name:"french bean (Ferrari)",        price:2.00, category:"Beans",      stock:10, image:"https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1200&q=60", desc:"Productive bean variety."},
+  {id:11, name:"broccoli (Calabrese)",         price:2.50, category:"Salad",      stock:10, image:"https://images.unsplash.com/photo-1582515073490-dc84e2060b44?auto=format&fit=crop&w=1200&q=60", desc:"Classic broccoli type."},
+  {id:12, name:"beetroot (Detroit)",           price:2.00, category:"Roots",      stock:10, image:"https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=1200&q=60", desc:"Great for roasting and salads."},
+  {id:13, name:"swiss chard (mixed)",          price:3.00, category:"Salad",      stock:10, image:"https://images.unsplash.com/photo-1584270354949-1f5a3a8f1e3b?auto=format&fit=crop&w=1200&q=60", desc:"Colourful stems, easy to grow."},
+  {id:14, name:"carrot (Cosmic purple)",       price:2.50, category:"Roots",      stock:10, image:"https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1200&q=60", desc:"Purple carrot – eye-catching and tasty."},
+  {id:15, name:"curly kale (Nero Di Toscana)", price:3.00, category:"Salad",      stock:10, image:"https://images.unsplash.com/photo-1587049352846-4a1a278e6b76?auto=format&fit=crop&w=1200&q=60", desc:"Hardy kale, great for winter."},
+  {id:16, name:"parsley",                      price:2.50, category:"Herbs",      stock:10, image:"https://images.unsplash.com/photo-1587731556938-38755b4803a6?auto=format&fit=crop&w=1200&q=60", desc:"Fresh herb staple for cooking."},
+  {id:17, name:"cabbage (brunswick)",          price:3.00, category:"Salad",      stock:10, image:"https://images.unsplash.com/photo-1518977956815-dee0064f6a5a?auto=format&fit=crop&w=1200&q=60", desc:"Classic cabbage variety."},
+  {id:18, name:"basil (genovese)",             price:2.50, category:"Herbs",      stock:10, image:"https://images.unsplash.com/photo-1515586838455-8f8f940d6853?auto=format&fit=crop&w=1200&q=60", desc:"Sweet basil for sauces and salads."},
+  {id:19, name:"mixed herb seeds",             price:2.20, category:"Seeds",      stock:10, image:"https://images.unsplash.com/photo-1457530378978-8bac673b8062?auto=format&fit=crop&w=1200&q=60", desc:"Mixed herb seed pack."},
+  {id:20, name:"starter gift box",             price:9.99, category:"Gift Boxes", stock:10, image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=60", desc:"A lovely starter bundle as a gift."}
 ];
 
-let currentCat="All";
+/* Load & normalise product schema */
+function normaliseProduct(p){
+  return {
+    id: p.id ?? Date.now(),
+    name: String(p.name ?? "").trim(),
+    price: Number(p.price ?? 0),
+    category: String(p.category ?? p.cat ?? "Other").trim() || "Other",
+    stock: Number.isFinite(p.stock) ? p.stock : Number(p.stock ?? 10),
+    image: String(p.image ?? p.img ?? "").trim(),
+    desc: String(p.desc ?? "Healthy starter plant / seeds.").trim()
+  };
+}
 
-function save(){localStorage.setItem(KEY,JSON.stringify(products));}
+let products = (JSON.parse(localStorage.getItem(PRODUCTS_KEY)) || defaultProducts).map(normaliseProduct);
+let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};          // { productId: qty }
+let orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) || [];      // [{id, createdAt, customer, items, total, status}]
 
-/* FILTERS */
+let currentCat = "All";
+
+/* ========= HELPERS ========= */
+function saveAll(){
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+}
+function money(n){ return "£" + (Number(n)||0).toFixed(2); }
+
+function cartCount(){
+  return Object.values(cart).reduce((a,b)=>a + (Number(b)||0), 0);
+}
+function updateCartCount(){
+  document.getElementById("cartCount").textContent = cartCount();
+}
+
+function getProduct(id){
+  return products.find(p => p.id === id);
+}
+function ensureStockNonNegative(){
+  products.forEach(p => { if(!Number.isFinite(p.stock) || p.stock < 0) p.stock = 0; });
+}
+
+function generateOrderId(){
+  const stamp = new Date().toISOString().replace(/[-:.TZ]/g,"").slice(0,14);
+  const rnd = Math.random().toString(16).slice(2,6).toUpperCase();
+  return "ORD-" + stamp + "-" + rnd;
+}
+
+/* ========= SHOP RENDER ========= */
 function renderCats(){
-  const cats=["All",...new Set(products.map(p=>p.cat))];
-  const el=document.getElementById("cats");
-  el.innerHTML="";
+  const el = document.getElementById("cats");
+  const cats = ["All", ...new Set(products.map(p => p.category).filter(Boolean))];
+  el.innerHTML = "";
   cats.forEach(c=>{
-    const b=document.createElement("button");
-    b.textContent=c;
-    if(c===currentCat)b.classList.add("active");
-    b.onclick=()=>{currentCat=c;render();};
+    const b = document.createElement("button");
+    b.textContent = c;
+    if(c === currentCat) b.classList.add("active");
+    b.onclick = ()=>{ currentCat = c; renderShop(); };
     el.appendChild(b);
   });
 }
 
-/* SHOP */
-function render(){
+function renderShop(){
+  ensureStockNonNegative();
   renderCats();
-  const grid=document.getElementById("grid");
-  grid.innerHTML="";
 
-  let list=[...products];
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
 
-  const search=document.getElementById("search").value.toLowerCase();
-  list=list.filter(p=>p.name.toLowerCase().includes(search));
-  if(currentCat!=="All")list=list.filter(p=>p.cat===currentCat);
+  let list = [...products];
 
-  if(document.getElementById("sort").value==="price"){
-    list.sort((a,b)=>a.price-b.price);
-  } else {
-    list.sort((a,b)=>a.name.localeCompare(b.name));
-  }
+  const s = document.getElementById("search").value.trim().toLowerCase();
+  if(s) list = list.filter(p => p.name.toLowerCase().includes(s));
+
+  if(currentCat !== "All") list = list.filter(p => p.category === currentCat);
+
+  const sort = document.getElementById("sort").value;
+  list.sort(sort === "price" ? (a,b)=>a.price-b.price : (a,b)=>a.name.localeCompare(b.name));
 
   list.forEach(p=>{
-    const div=document.createElement("div");
-    div.className="card";
+    const div = document.createElement("div");
+    div.className = "card";
 
-    let badge="";
-    if(p.stock===0) badge='<div class="badge out">Out of stock</div>';
-    else if(p.stock<5) badge='<div class="badge low">Low stock</div>';
+    let badge = "";
+    if(p.stock === 0) badge = '<div class="stock-badge out">Out of stock</div>';
+    else if(p.stock < 5) badge = '<div class="stock-badge low">Low stock</div>';
 
-    div.innerHTML=`
+    div.innerHTML = `
       ${badge}
-      <img src="${p.img}">
+      <img src="${p.image}" alt="${p.name}">
       <h3>${p.name}</h3>
-      <p>£${p.price}</p>
-      <button class="btn green">View</button>
-      <a href="${FORM}" target="_blank">
-        <button class="btn ${p.stock? 'green':'grey'}" ${!p.stock?'disabled':''}>
-          Order
-        </button>
-      </a>
+      <p>${money(p.price)} • <span class="small">Stock: ${p.stock}</span></p>
+      <button class="btn dark" data-action="view">View</button>
+      <button class="btn green" data-action="add" ${p.stock===0 ? "disabled":""}>Add to basket</button>
     `;
 
-    div.querySelector(".green").onclick=()=>show(p);
+    div.querySelector('[data-action="view"]').onclick = ()=> openProduct(p.id);
+    div.querySelector('[data-action="add"]').onclick = ()=> addToCart(p.id, 1);
+
     grid.appendChild(div);
   });
+
+  updateCartCount();
+  saveAll();
 }
 
-/* MODAL */
-function show(p){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("modalContent").innerHTML=`
+/* ========= PRODUCT MODAL ========= */
+function openProduct(id){
+  const p = getProduct(id);
+  if(!p) return;
+
+  const modal = document.getElementById("productModal");
+  const el = document.getElementById("productModalContent");
+
+  el.innerHTML = `
     <h2>${p.name}</h2>
-    <img src="${p.img}" style="width:100%">
-    <p>${p.desc}</p>
-    <p><b>£${p.price}</b></p>
-    <button onclick="closeModal()">Close</button>
+    <img src="${p.image}" alt="${p.name}">
+    <div class="hr"></div>
+    <p style="margin:0 0 8px">${p.desc}</p>
+    <p style="margin:0 0 8px"><b>${money(p.price)}</b> • <span class="small">Stock: ${p.stock}</span></p>
+    <div class="row">
+      <button class="btn green" ${p.stock===0?"disabled":""} onclick="addToCart(${p.id},1)">Add to basket</button>
+      <button class="btn grey" onclick="closeAny('productModal')">Close</button>
+    </div>
+  `;
+  modal.style.display = "flex";
+}
+
+function closeModal(e, id){
+  if(e && e.target && e.target.id === id){
+    document.getElementById(id).style.display = "none";
+  }
+}
+function closeAny(id){
+  document.getElementById(id).style.display = "none";
+}
+
+/* ========= CART ========= */
+function addToCart(id, qty){
+  const p = getProduct(id);
+  if(!p || p.stock <= 0) return;
+
+  const current = Number(cart[id] || 0);
+  const next = Math.min(current + qty, p.stock);
+  cart[id] = next;
+  saveAll();
+  updateCartCount();
+  openCart(); // show confirmation by opening
+}
+
+function setQty(id, qty){
+  const p = getProduct(id);
+  if(!p) return;
+  qty = Math.max(0, Math.min(qty, p.stock));
+
+  if(qty === 0) delete cart[id];
+  else cart[id] = qty;
+
+  saveAll();
+  updateCartCount();
+  renderCartModal();
+}
+
+function cartItemsDetailed(){
+  const items = [];
+  for(const [idStr, qty] of Object.entries(cart)){
+    const id = Number(idStr);
+    const p = getProduct(id);
+    if(p && qty > 0){
+      items.push({id, qty:Number(qty), name:p.name, price:p.price, image:p.image, maxStock:p.stock});
+    }
+  }
+  return items;
+}
+
+function cartTotal(){
+  return cartItemsDetailed().reduce((sum, it)=> sum + it.price * it.qty, 0);
+}
+
+function openCart(){
+  renderCartModal();
+  document.getElementById("cartModal").style.display = "flex";
+}
+
+function renderCartModal(){
+  const el = document.getElementById("cartModalContent");
+  const items = cartItemsDetailed();
+
+  if(items.length === 0){
+    el.innerHTML = `
+      <h2>Your basket</h2>
+      <p>Your basket is empty.</p>
+      <button class="btn grey" onclick="closeAny('cartModal')">Close</button>
+    `;
+    return;
+  }
+
+  const lines = items.map(it => `
+    <div class="cart-item">
+      <img src="${it.image}" alt="${it.name}">
+      <div>
+        <div style="font-weight:900">${it.name}</div>
+        <div class="small">${money(it.price)} each</div>
+      </div>
+      <div class="qty-controls">
+        <button onclick="setQty(${it.id}, ${it.qty-1})">−</button>
+        <span>${it.qty}</span>
+        <button onclick="setQty(${it.id}, ${it.qty+1})" ${it.qty>=it.maxStock ? "disabled":""}>+</button>
+      </div>
+    </div>
+  `).join("");
+
+  el.innerHTML = `
+    <h2>Your basket</h2>
+    ${lines}
+    <div class="total-line"><span>Total</span><span>${money(cartTotal())}</span></div>
+
+    <div class="hr"></div>
+    <h3 style="margin:0 0 8px">Checkout details</h3>
+    <div class="row">
+      <input id="custName" placeholder="Full name" />
+      <input id="custPhone" placeholder="Phone number" />
+    </div>
+    <div class="row">
+      <input id="custEmail" placeholder="Email (optional)" />
+      <select id="fulfilment">
+        <option value="Collection">Collection</option>
+        <option value="Delivery">Delivery</option>
+      </select>
+    </div>
+    <textarea id="custNotes" rows="3" placeholder="Notes (e.g. preferred collection time, special requests)"></textarea>
+
+    <div class="row">
+      <button class="btn green" onclick="placeOrder()">Place order</button>
+      <button class="btn grey" onclick="closeAny('cartModal')">Close</button>
+    </div>
+    <p class="small">Placing an order reduces stock and records the order for admin tracking.</p>
   `;
 }
-function closeModal(){document.getElementById("modal").style.display="none";}
 
-/* ADMIN */
-function login(){
-  const pw=prompt("Enter password:");
-  if(pw===PASS){
-    document.getElementById("shop").style.display="none";
-    document.getElementById("admin").style.display="block";
-    renderAdmin();
+/* ========= ORDERS ========= */
+function placeOrder(){
+  const name = (document.getElementById("custName")?.value || "").trim();
+  const phone = (document.getElementById("custPhone")?.value || "").trim();
+  const email = (document.getElementById("custEmail")?.value || "").trim();
+  const fulfil = document.getElementById("fulfilment")?.value || "Collection";
+  const notes = (document.getElementById("custNotes")?.value || "").trim();
+
+  if(!name || !phone){
+    alert("Please enter your name and phone number.");
+    return;
+  }
+
+  const items = cartItemsDetailed();
+  if(items.length === 0){
+    alert("Your basket is empty.");
+    return;
+  }
+
+  // Check stock again before confirming
+  for(const it of items){
+    const p = getProduct(it.id);
+    if(!p || p.stock < it.qty){
+      alert(`Sorry — "${it.name}" does not have enough stock available now. Please reduce the quantity.`);
+      return;
+    }
+  }
+
+  // Reduce stock
+  items.forEach(it=>{
+    const p = getProduct(it.id);
+    p.stock = Math.max(0, p.stock - it.qty);
+  });
+
+  const order = {
+    id: generateOrderId(),
+    createdAt: new Date().toISOString(),
+    status: "New",
+    customer: { name, phone, email, fulfilment: fulfil, notes },
+    items: items.map(it=>({id:it.id, name:it.name, price:it.price, qty:it.qty})),
+    total: cartTotal()
+  };
+
+  orders.unshift(order); // newest first
+  cart = {};             // clear basket
+
+  saveAll();
+  updateCartCount();
+  renderShop();
+
+  // Confirmation
+  const el = document.getElementById("cartModalContent");
+  el.innerHTML = `
+    <h2>Order placed ✅</h2>
+    <p><b>Order ID:</b> ${order.id}</p>
+    <p>We’ve recorded your order for admin tracking.</p>
+
+    <div class="hr"></div>
+    <div>
+      ${order.items.map(i=>`<div class="small" style="margin:4px 0">• ${i.qty} × ${i.name} (${money(i.price)})</div>`).join("")}
+      <p style="font-weight:900;margin-top:10px">Total: ${money(order.total)}</p>
+    </div>
+
+    <button class="btn dark" onclick="downloadReceipt('${order.id}')">Download receipt (.txt)</button>
+    <button class="btn green" onclick="closeAny('cartModal')">Close</button>
+  `;
+
+  // If admin is open, refresh admin views
+  if(document.getElementById("admin").style.display === "block"){
+    renderAdminOrders();
+    renderAdminProducts();
   }
 }
 
-function add(){
-  products.push({
-    id:Date.now(),
-    name:n.value,
-    price:+p.value,
-    cat:c.value,
-    img:i.value,
-    stock:+s.value,
-    desc:"New plant"
-  });
-  save();render();renderAdmin();
+function downloadReceipt(orderId){
+  const o = orders.find(x=>x.id===orderId);
+  if(!o) return;
+
+  const lines = [
+    "Vegetable, vegetation & plants",
+    "Receipt",
+    "----------------------------------------",
+    `Order ID: ${o.id}`,
+    `Created: ${o.createdAt}`,
+    `Status: ${o.status}`,
+    "",
+    `Customer: ${o.customer.name}`,
+    `Phone: ${o.customer.phone}`,
+    `Email: ${o.customer.email || "-"}`,
+    `Fulfilment: ${o.customer.fulfilment}`,
+    `Notes: ${o.customer.notes || "-"}`,
+    "",
+    "Items:",
+    ...o.items.map(i=>`- ${i.qty} x ${i.name} @ ${money(i.price)} = ${money(i.price*i.qty)}`),
+    "",
+    `Total: ${money(o.total)}`,
+    "----------------------------------------"
+  ].join("\n");
+
+  const blob = new Blob([lines], {type:"text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${o.id}-receipt.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
-function renderAdmin(){
-  const el=document.getElementById("adminList");
-  el.innerHTML="";
-  products.forEach(p=>{
-    const d=document.createElement("div");
-    d.innerHTML=`
-      ${p.name} (${p.stock})
-      <button onclick="del(${p.id})">Delete</button>
+/* ========= ADMIN ========= */
+function login(){
+  const pw = prompt("Enter admin password:");
+  if(pw === PASS){
+    document.getElementById("shop").style.display = "none";
+    document.getElementById("admin").style.display = "block";
+    showTab('products');
+    renderAdminProducts();
+    renderAdminOrders();
+  }
+}
+
+function logout(){
+  document.getElementById("admin").style.display = "none";
+  document.getElementById("shop").style.display = "block";
+  renderShop();
+}
+
+function showTab(which){
+  const tp = document.getElementById("tabProducts");
+  const to = document.getElementById("tabOrders");
+  const pp = document.getElementById("panelProducts");
+  const po = document.getElementById("panelOrders");
+
+  if(which === "orders"){
+    tp.classList.remove("active"); to.classList.add("active");
+    pp.style.display = "none"; po.style.display = "block";
+    renderAdminOrders();
+  } else {
+    to.classList.remove("active"); tp.classList.add("active");
+    po.style.display = "none"; pp.style.display = "block";
+    renderAdminProducts();
+  }
+}
+
+function addProduct(){
+  const name = document.getElementById("n").value.trim();
+  const price = parseFloat(document.getElementById("p").value);
+  const category = document.getElementById("c").value.trim() || "Other";
+  const stock = parseInt(document.getElementById("s").value, 10);
+  const image = document.getElementById("i").value.trim();
+  const desc = document.getElementById("d").value.trim() || "New product";
+
+  if(!name || !Number.isFinite(price)){
+    alert("Please enter a product name and a valid price.");
+    return;
+  }
+
+  const p = normaliseProduct({
+    id: Date.now(),
+    name, price, category,
+    stock: Number.isFinite(stock) ? stock : 0,
+    image, desc
+  });
+
+  products.push(p);
+  saveAll();
+  renderAdminProducts();
+
+  // clear fields
+  ["n","p","c","s","i","d"].forEach(id => document.getElementById(id).value = "");
+}
+
+function renderAdminProducts(){
+  const el = document.getElementById("adminProductList");
+  el.innerHTML = "";
+
+  products
+    .slice()
+    .sort((a,b)=>a.name.localeCompare(b.name))
+    .forEach(p=>{
+      const row = document.createElement("div");
+      row.className = "admin-list-item";
+      row.innerHTML = `
+        <div>
+          <div style="font-weight:900">${p.name}</div>
+          <div class="small">${money(p.price)} • ${p.category} • Stock: <b>${p.stock}</b></div>
+        </div>
+        <div class="admin-actions">
+          <button class="btn grey" onclick="adjustStock(${p.id}, -1)">-1</button>
+          <button class="btn grey" onclick="adjustStock(${p.id}, 1)">+1</button>
+          <button class="btn dark" onclick="openProduct(${p.id})">View</button>
+          <button class="btn" style="background:#ffeded;color:#7a0c0c" onclick="deleteProduct(${p.id})">Delete</button>
+        </div>
+      `;
+      el.appendChild(row);
+    });
+}
+
+function adjustStock(id, delta){
+  const p = getProduct(id);
+  if(!p) return;
+  p.stock = Math.max(0, (Number(p.stock)||0) + delta);
+  saveAll();
+  renderAdminProducts();
+  renderShop();
+}
+
+function deleteProduct(id){
+  if(!confirm("Delete this product?")) return;
+  products = products.filter(p=>p.id!==id);
+
+  // Remove from cart too
+  delete cart[id];
+
+  saveAll();
+  renderAdminProducts();
+  renderShop();
+  updateCartCount();
+}
+
+function renderAdminOrders(){
+  const el = document.getElementById("adminOrderList");
+  el.innerHTML = "";
+
+  if(orders.length === 0){
+    el.innerHTML = `<p>No orders yet.</p>`;
+    return;
+  }
+
+  orders.forEach(o=>{
+    const wrap = document.createElement("div");
+    wrap.className = "admin-list-item";
+    wrap.innerHTML = `
+      <div>
+        <div style="font-weight:900">${o.id}</div>
+        <div class="small">
+          ${new Date(o.createdAt).toLocaleString()} • ${o.customer.name} • ${o.customer.fulfilment} • Total: <b>${money(o.total)}</b>
+        </div>
+      </div>
+      <div class="admin-actions">
+        <select class="status" onchange="setOrderStatus('${o.id}', this.value)">
+          ${["New","Processing","Ready","Completed","Cancelled"].map(s=>`
+            <option value="${s}" ${o.status===s?"selected":""}>${s}</option>
+          `).join("")}
+        </select>
+        <button class="btn dark" onclick="viewOrder('${o.id}')">View</button>
+        <button class="btn" style="background:#ffeded;color:#7a0c0c" onclick="deleteOrder('${o.id}')">Delete</button>
+      </div>
     `;
-    el.appendChild(d);
+    el.appendChild(wrap);
   });
 }
 
-function del(id){
-  products=products.filter(p=>p.id!==id);
-  save();render();renderAdmin();
+function setOrderStatus(orderId, status){
+  const o = orders.find(x=>x.id===orderId);
+  if(!o) return;
+  o.status = status;
+  saveAll();
 }
 
-/* INIT */
-render();
+function viewOrder(orderId){
+  const o = orders.find(x=>x.id===orderId);
+  if(!o) return;
+
+  const lines = o.items.map(i=>`
+    <div class="small" style="margin:4px 0">• ${i.qty} × ${i.name} (${money(i.price)})</div>
+  `).join("");
+
+  const content = `
+    <h2>${o.id}</h2>
+    <p class="small">${new Date(o.createdAt).toLocaleString()} • Status: <b>${o.status}</b></p>
+
+    <div class="hr"></div>
+    <h3 style="margin:0 0 6px">Customer</h3>
+    <p style="margin:0 0 6px"><b>${o.customer.name}</b></p>
+    <p style="margin:0 0 6px">Phone: ${o.customer.phone}</p>
+    <p style="margin:0 0 6px">Email: ${o.customer.email || "-"}</p>
+    <p style="margin:0 0 6px">Fulfilment: ${o.customer.fulfilment}</p>
+    <p style="margin:0 0 6px">Notes: ${o.customer.notes || "-"}</p>
+
+    <div class="hr"></div>
+    <h3 style="margin:0 0 6px">Items</h3>
+    ${lines}
+    <p style="font-weight:900;margin-top:10px">Total: ${money(o.total)}</p>
+
+    <div class="row">
+      <button class="btn dark" onclick="downloadReceipt('${o.id}')">Download receipt</button>
+      <button class="btn grey" onclick="closeAny('productModal')">Close</button>
+    </div>
+  `;
+
+  // Reuse product modal for admin order view (keeps page simple)
+  document.getElementById("productModalContent").innerHTML = content;
+  document.getElementById("productModal").style.display = "flex";
+}
+
+function deleteOrder(orderId){
+  if(!confirm("Delete this order?")) return;
+  orders = orders.filter(o=>o.id!==orderId);
+  saveAll();
+  renderAdminOrders();
+}
+
+function clearAllOrders(){
+  if(!confirm("Clear ALL orders? This cannot be undone.")) return;
+  orders = [];
+  saveAll();
+  renderAdminOrders();
+}
+
+function exportOrdersCSV(){
+  if(orders.length === 0){ alert("No orders to export."); return; }
+
+  // Flatten orders into CSV rows
+  const header = [
+    "order_id","created_at","status",
+    "customer_name","customer_phone","customer_email","fulfilment","notes",
+    "item_name","item_qty","item_price","line_total","order_total"
+  ];
+
+  const rows = [header];
+
+  orders.forEach(o=>{
+    o.items.forEach(it=>{
+      rows.push([
+        o.id,
+        o.createdAt,
+        o.status,
+        o.customer.name,
+        o.customer.phone,
+        o.customer.email || "",
+        o.customer.fulfilment,
+        (o.customer.notes || "").replace(/\n/g," "),
+        it.name,
+        it.qty,
+        it.price,
+        (it.qty * it.price).toFixed(2),
+        o.total.toFixed(2)
+      ]);
+    });
+  });
+
+  // Escape CSV safely
+  const csv = rows.map(r => r.map(v => {
+    const s = String(v ?? "");
+    if(/[",\n]/.test(s)) return `"${s.replace(/"/g,'""')}"`;
+    return s;
+  }).join(",")).join("\n");
+
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `orders-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ========= INIT ========= */
+document.getElementById("search").addEventListener("input", renderShop);
+document.getElementById("sort").addEventListener("change", renderShop);
+
+updateCartCount();
+renderShop();
 </script>
 
 </body>

@@ -317,7 +317,11 @@ select.status{padding:8px 10px; border-radius:12px}
 <div class="modal" id="cartModal" onclick="closeModal(event,'cartModal')">
   <div class="modal-content" id="cartModalContent"></div>
 </div>
+  const supabaseUrl = "https://wzfdermkiswnwnuyvsfg.supabase.co/";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZmRlcm1raXN3bndudXl2c2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NjkyOTcsImV4cCI6MjA5MzI0NTI5N30.Xb1tBmMV5ozSBnASCeKJUiW0oPfpe8lYCmBHKq5df6o";
 
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
 /* ========= SETTINGS ========= */
 const PASS = "admin123";

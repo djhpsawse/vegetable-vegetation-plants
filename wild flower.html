@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wildflowers to Grow and When to Grow Them</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f7faf7;
+      color: #1f2933;
+    }
+    header {
+      background: linear-gradient(135deg, #2563eb, #16a34a);
+      color: #fff;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.2rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin-inline: auto;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 3rem;
+    }
+    h2 {
+      margin-top: 2.5rem;
+      color: #14532d;
+      border-bottom: 2px solid #d1fae5;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      margin-top: 1.5rem;
+      color: #065f46;
+    }
+    p {
+      margin: 0.5rem 0 0.9rem;
+    }
+    .intro {
+      background: #ecfdf3;
+      border-left: 4px solid #16a34a;
+      padding: 1rem 1.25rem;
+      border-radius: 0.4rem;
+      margin-bottom: 2rem;
+    }
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .season-card {
+      background: #ffffff;
+      border-radius: 0.6rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      border: 1px solid #e5e7eb;
+    }
+    .season-card h3 {
+      margin-top: 0;
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0.8rem;
+    }
+    li {
+      margin-bottom: 0.25rem;
+    }
+    .tip {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 0.9rem 1.1rem;
+      border-radius: 0.4rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      background: #ffffff;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+    .calendar-table th,
+    .calendar-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+    }
+    .calendar-table th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #065f46;
+      background: #dcfce7;
+      margin-left: 0.3rem;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f1f3f6;
+      color: #111;
+    }
+
+    /* Top bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      z-index: 1000;
+    }
+
+    .top-bar-inner {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      left: 0;
+      background: white;
+      color: black;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    /* Buttons */
+    .top-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .large-button {
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      background-color: #111;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.12s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    .large-button:hover {
+      background-color: #004F00;
+      transform: translateY(-2px);
+    }
+
+    /* Layout */
+    .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .side-news .card {
+      margin-bottom: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 12px;
+      }
+      .logo {
+        display: none;
+      }
+      .large-button {
+        padding: 12px 18px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="file:///C:/Users/harry/OneDrive/ordering/test.html">VVP</a>
+
+      <nav class="top-buttons">
+        <a href="file:///C:/Users/harry/OneDrive/ordering/test.html" class="large-button">VVP</a>
+        <a href="plants.html" class="large-button">PLANTS</a>
+        <a href="https://www.gardenersworld.com/" class="large-button">GARDENERS WORLD</a>
+      </nav>
+    </div>
+  </header>
+
+  <header>
+    <h1>Wildflowers to Grow and When to Grow Them</h1>
+    <p>
+      A simple, seasonal guide to sowing wildflowers so you can enjoy colour, pollinators, and a more natural garden all year long.
+    </p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Why grow wildflowers?</h2>
+      <p>
+        Wildflowers are low‑maintenance, wildlife‑friendly, and perfect for adding natural beauty to borders, meadows, and even pots.
+        By choosing the right mix and sowing at the right time, you can create a long‑lasting display that supports bees,
+        butterflies, and other pollinators.
+      </p>
+      <p>
+        The best time to sow most wildflower seeds is either in <strong>spring</strong> or <strong>early autumn</strong>, when soil is moist
+        and temperatures are mild. Below you’ll find ideas for what to grow and a simple calendar to keep you on track.
+      </p>
+    </section>
+
+    <section>
+      <h2>Best wildflowers to grow</h2>
+
+      <h3>Easy annual wildflowers</h3>
+      <p>
+        Annual wildflowers complete their life cycle in one year, but they flower quickly and generously. They’re ideal for new
+        meadows, gaps in borders, or a quick burst of colour.
+      </p>
+      <ul>
+        <li><strong>Cornflower</strong> – Classic blue flowers that bees love.</li>
+        <li><strong>Common poppy</strong> – Bright red blooms that thrive in poor soil.</li>
+        <li><strong>Corn marigold</strong> – Cheerful yellow flowers that mix well with poppies and cornflowers.</li>
+        <li><strong>California poppy</strong> – Silky orange or yellow flowers that cope well with dry conditions.</li>
+        <li><strong>Cosmos</strong> – Tall, airy plants with pink, white, or purple daisy‑like flowers.</li>
+      </ul>
+
+      <h3>Reliable perennial wildflowers</h3>
+      <p>
+        Perennial wildflowers take longer to establish but return year after year, gradually thickening into a stable meadow.
+      </p>
+      <ul>
+        <li><strong>Oxeye daisy</strong> – Large white daisies that light up summer meadows.</li>
+        <li><strong>Red campion</strong> – Pink flowers that do well in partial shade.</li>
+        <li><strong>Yarrow</strong> – Flat flower heads in white or soft colours, great for pollinators.</li>
+        <li><strong>Field scabious</strong> – Lilac pincushion flowers loved by bees and butterflies.</li>
+        <li><strong>Bird’s‑foot trefoil</strong> – Low‑growing yellow flowers that support many caterpillars.</li>
+      </ul>
+
+      <h3>Shade‑tolerant wildflowers</h3>
+      <p>
+        If you have a shady corner, you can still grow wildflowers—just choose species that prefer less sun.
+      </p>
+      <ul>
+        <li><strong>Bluebell</strong> – Ideal for woodland‑style areas (plant bulbs in autumn).</li>
+        <li><strong>Wood anemone</strong> – Delicate white flowers for dappled shade.</li>
+        <li><strong>Foxglove</strong> – Tall spires of bell‑shaped flowers, great for bees.</li>
+        <li><strong>Primrose</strong> – Soft yellow flowers that appear in early spring.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>When to sow wildflowers</h2>
+      <p>
+        Most wildflower mixes can be sown in either <strong>March–May</strong> or <strong>September–October</strong>. Spring sowings give
+        you flowers in the same year (especially annuals), while autumn sowings establish strong roots for earlier flowering the
+        following year.
+      </p>
+
+      <div class="season-grid">
+        <article class="season-card">
+          <h3>Spring sowing <span class="badge">March–May</span></h3>
+          <p>
+            As the soil warms, seeds germinate quickly. This is a great time for annual mixes and areas that get full sun.
+          </p>
+          <ul>
+            <li><strong>Best for:</strong> Cornflowers, poppies, corn marigold, cosmos.</li>
+            <li><strong>Soil:</strong> Rake to a fine tilth and remove weeds.</li>
+            <li><strong>Depth:</strong> Scatter on the surface and lightly rake in.</li>
+            <li><strong>Watering:</strong> Keep moist until seedlings are established.</li>
+          </ul>
+        </article>
+
+        <article class="season-card">
+          <h3>Autumn sowing <span class="badge">September–October</span></h3>
+          <p>
+            Cooler temperatures and autumn rain help seeds settle and root before winter, especially perennials and meadow mixes.
+          </p>
+          <ul>
+            <li><strong>Best for:</strong> Oxeye daisy, yarrow, red campion, meadow mixes.</li>
+            <li><strong>Soil:</strong> Clear grass and weeds; wildflowers prefer low‑fertility soil.</li>
+            <li><strong>Frost:</strong> Many species benefit from winter cold to break dormancy.</li>
+            <li><strong>Result:</strong> Stronger plants and earlier flowers next year.</li>
+          </ul>
+        </article>
+
+        <article class="season-card">
+          <h3>Bulbs and plugs <span class="badge">Autumn & early spring</span></h3>
+          <p>
+            Some wildflowers are easier to establish from bulbs or small plug plants rather than seed.
+          </p>
+          <ul>
+            <li><strong>Bluebells & primroses:</strong> Plant in autumn for spring flowers.</li>
+            <li><strong>Foxgloves:</strong> Plant young plants in spring or autumn.</li>
+            <li><strong>Shady spots:</strong> Tuck bulbs and plugs into leaf litter or under shrubs.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="tip">
+        <strong>Tip:</strong> In very cold or very wet conditions, wait for a dry, mild spell before sowing. Seeds need contact with
+        soil and some warmth to germinate well.
+      </div>
+    </section>
+
+    <section>
+      <h2>Simple wildflower sowing calendar</h2>
+      <p>
+        Use this rough calendar as a guide. Exact timing will depend on your local climate and soil conditions.
+      </p>
+
+      <table class="calendar-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>What to do</th>
+            <th>Good choices</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>February</td>
+            <td>Plan your meadow, clear weeds, and prepare soil.</td>
+            <td>Order seed mixes and bulbs.</td>
+          </tr>
+          <tr>
+            <td>March</td>
+            <td>Start spring sowing in milder areas.</td>
+            <td>Cornflower, poppy, corn marigold, annual mixes.</td>
+          </tr>
+          <tr>
+            <td>April</td>
+            <td>Main spring sowing period; keep soil moist.</td>
+            <td>Most annual wildflowers, some perennials.</td>
+          </tr>
+          <tr>
+            <td>May</td>
+            <td>Last chance for spring sowing in cooler areas.</td>
+            <td>Fast‑growing annuals like cornflower and cosmos.</td>
+          </tr>
+          <tr>
+            <td>June–August</td>
+            <td>Enjoy flowers; mow or cut back once seeds have dropped.</td>
+            <td>All established wildflowers.</td>
+          </tr>
+          <tr>
+            <td>September</td>
+            <td>Begin autumn sowing; prepare new areas.</td>
+            <td>Perennial mixes, meadow blends, oxeye daisy, yarrow.</td>
+          </tr>
+          <tr>
+            <td>October</td>
+            <td>Finish autumn sowing before heavy frosts.</td>
+            <td>Perennials and hardy annuals that like a cold spell.</td>
+          </tr>
+          <tr>
+            <td>November–January</td>
+            <td>Rest period; avoid sowing, but you can plant some bulbs.</td>
+            <td>Bluebells, wild daffodils, other woodland bulbs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Looking after your wildflower patch</h2>
+      <p>
+        Once your wildflowers are growing, they need surprisingly little care. Avoid feeding the soil, as rich ground encourages
+        coarse grasses and weeds rather than flowers.
+      </p>
+      <ul>
+        <li><strong>Watering:</strong> Only in very dry spells, especially in the first year.</li>
+        <li><strong>Weeds:</strong> Hand‑pull obvious weeds before they set seed.</li>
+        <li><strong>Mowing:</strong> For meadows, cut once or twice a year after flowering and remove the cuttings.</li>
+        <li><strong>Reseeding:</strong> Scatter a little fresh seed each year if you want to keep lots of annuals.</li>
+      </ul>
+
+      <div class="tip">
+        <strong>Wildlife bonus:</strong> Leave some seed heads standing over winter. They provide food for birds and shelter for insects.
+      </div>
+    </section>
+        <a href="https://www.wildflower.co.uk/products/wildflower-seed-mixtures/100-wildflower-seed-mixtures/" 
+class="large-button">
+Click here to buy wildflower seeds
+  </main>
+</body>
+</html>

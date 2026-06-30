@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f1f3f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .result {
+      background: white;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    a {
+      color: #004F00;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Search Results</h1>
+  <p id="queryText"></p>
+
+  <div id="results"></div>
+
+  <script>
+    // Get search term from URL
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q")?.toLowerCase() || "";
+
+    document.getElementById("queryText").textContent =
+      query ? `You searched for: "${query}"` : "No search term entered.";
+
+    // Your site’s searchable items
+    const plants = [
+      { name: "Nasturtiums", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/nasturtiums" },
+      { name: "Lavender", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/lavender" },
+      { name: "Roses", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/roses" }
+      { name: "Broad beans", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/broad-beans" }
+      { name: "Peas", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/peas" }
+      { name: "Sunflowers", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/sunflowers" }
+      { name: "Sweet peas", url: "https://djhpsawse.github.io/vegetable-vegetation-plants-plants/sweet-peas" }
+      { name: "Monthly plant", url: "https://djhpsawse.github.io/vegetable-vegetation-plants/monthly%20delvery%20box.html"
+      { name: "Delivery box", url: "https://djhpsawse.github.io/vegetable-vegetation-plants/monthly%20delvery%20box.html"
+      { name: "Gardeners world", url: "https://www.gardenersworld.com/" 
+    ];
+
+    // Filter results
+    const matches = plants.filter(p =>
+      p.name.toLowerCase().includes(query)
+    );
+
+    const resultsDiv = document.getElementById("results");
+
+    if (matches.length === 0) {
+      resultsDiv.innerHTML = "<p>No results found.</p>";
+    } else {
+      matches.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result";
+        div.innerHTML = `<a href="${item.url}">${item.name}</a>`;
+        resultsDiv.appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>
